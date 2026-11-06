@@ -8,5 +8,19 @@
   "signInHost": "auth.greenhouse.io",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:d88b930a3a43e7fdab3ca089a8af15c7c447d72e8167f3834d6d1d998c50c1b0"
+  "metadataHash": "sha256:d88b930a3a43e7fdab3ca089a8af15c7c447d72e8167f3834d6d1d998c50c1b0",
+  "server": "https://mcp.greenhouse.io/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.greenhouse.io/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "greenhouse.io is the main domain of Greenhouse, the hiring software company, and the server host mcp.greenhouse.io is a subdomain of it.",
+      "The search found that Greenhouse's official documentation lists https mcp.greenhouse.io mcp as its remote MCP server.",
+      "The sign-in host auth.greenhouse.io is on the same company domain, and the name and 'Hiring' description match the product."
+    ]
+  }
 }

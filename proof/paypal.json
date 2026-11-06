@@ -8,5 +8,19 @@
   "signInHost": "mcp.paypal.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:fe82c893eebf24eb9dc7d8a1839e5939e81362c66a3bd48e5a733e5d1218bd5b"
+  "metadataHash": "sha256:fe82c893eebf24eb9dc7d8a1839e5939e81362c66a3bd48e5a733e5d1218bd5b",
+  "server": "https://mcp.paypal.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "A bot check stands in front of its sign-in page, so this can't tell.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.paypal.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server host mcp.paypal.com is a subdomain of PayPal's main domain, paypal.com, and it matches the official remote MCP server in PayPal's documentation.",
+      "The sign-in host is the same as the server host, so sign-ins go to PayPal and not a third party.",
+      "The documented endpoints are http and sse, not mcp, but the host is PayPal's, so the path difference is minor."
+    ]
+  }
 }

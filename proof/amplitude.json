@@ -8,5 +8,19 @@
   "signInHost": "mcp.amplitude.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:f0af8a68520aeb232b796d167b9f231e659dd58ab5c03e3a153fa11edd9b8153"
+  "metadataHash": "sha256:f0af8a68520aeb232b796d167b9f231e659dd58ab5c03e3a153fa11edd9b8153",
+  "server": "https://mcp.amplitude.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.amplitude.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is a subdomain of amplitude.com, which is the company's own main domain and matches the entry's company field.",
+      "The sign-in host is the same mcp.amplitude.com host, so no third-party sign-in server is involved.",
+      "Amplitude's own documentation lists https mcp.amplitude.com mcp as its official US remote MCP server, and the name and description (product analytics) are accurate."
+    ]
+  }
 }

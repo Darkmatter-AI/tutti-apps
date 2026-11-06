@@ -8,5 +8,19 @@
   "signInHost": "mcp.webflow.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:cf1857367798d0d982d643c785ba13fc2a5d9f70a35c8367fa1bc0561fca4207"
+  "metadataHash": "sha256:cf1857367798d0d982d643c785ba13fc2a5d9f70a35c8367fa1bc0561fca4207",
+  "server": "https://mcp.webflow.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.webflow.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server host mcp.webflow.com is a subdomain of webflow.com, which is Webflow's main domain and matches the company field.",
+      "The sign-in host is the same mcp.webflow.com, so sign-ins do not go to a third party.",
+      "An independent search identifies https mcp.webflow.com mcp as Webflow's official remote MCP server, and the name and description (Webflow, Websites) are accurate."
+    ]
+  }
 }

@@ -15,8 +15,9 @@
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
-      "signInHost": "api.ahrefs.com",
-      "renews": false
+      "signInHost": "app.ahrefs.com",
+      "renews": false,
+      "problem": "A bot check stands in front of its sign-in page, so this can't tell."
     },
     {
       "key": "airtable",
@@ -28,12 +29,13 @@
         "kind": "mcp",
         "server": "https://mcp.airtable.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "airtable.com",
-      "renews": null
+      "renews": null,
+      "problem": null
     },
     {
       "key": "amplitude",
@@ -45,12 +47,13 @@
         "kind": "mcp",
         "server": "https://mcp.amplitude.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.amplitude.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "atlassian",
@@ -67,7 +70,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "auth.atlassian.com",
-      "renews": true
+      "renews": true,
+      "problem": "The sign-in page answered 202."
     },
     {
       "key": "attio",
@@ -79,12 +83,13 @@
         "kind": "mcp",
         "server": "https://mcp.attio.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "app.attio.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "calendly",
@@ -96,12 +101,13 @@
         "kind": "mcp",
         "server": "https://mcp.calendly.com/"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "calendly.com",
-      "renews": null
+      "renews": null,
+      "problem": null
     },
     {
       "key": "canva",
@@ -113,12 +119,13 @@
         "kind": "mcp",
         "server": "https://mcp.canva.com/mcp"
       },
-      "state": "drafted",
+      "state": "doubted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.canva.com",
-      "renews": true
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "clickup",
@@ -130,12 +137,13 @@
         "kind": "mcp",
         "server": "https://mcp.clickup.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.clickup.com",
-      "renews": false
+      "renews": false,
+      "problem": null
     },
     {
       "key": "close",
@@ -147,12 +155,13 @@
         "kind": "mcp",
         "server": "https://mcp.close.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
-      "signInHost": "api.close.com",
-      "renews": true
+      "signInHost": "app.close.com",
+      "renews": true,
+      "problem": null
     },
     {
       "key": "cloudflare",
@@ -164,12 +173,13 @@
         "kind": "mcp",
         "server": "https://bindings.mcp.cloudflare.com/mcp"
       },
-      "state": "drafted",
+      "state": "doubted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "bindings.mcp.cloudflare.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "contentful",
@@ -181,12 +191,13 @@
         "kind": "mcp",
         "server": "https://mcp.contentful.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.contentful.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "figma",
@@ -202,8 +213,9 @@
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
-      "signInHost": "api.figma.com",
-      "renews": true
+      "signInHost": "www.figma.com",
+      "renews": true,
+      "problem": "Registering answered 403."
     },
     {
       "key": "fireflies",
@@ -215,12 +227,13 @@
         "kind": "mcp",
         "server": "https://api.fireflies.ai/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "api.fireflies.ai",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "gitlab",
@@ -237,7 +250,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "gitlab.com",
-      "renews": true
+      "renews": true,
+      "problem": "A bot check stands in front of its sign-in page, so this can't tell."
     },
     {
       "key": "greenhouse",
@@ -249,12 +263,13 @@
         "kind": "mcp",
         "server": "https://mcp.greenhouse.io/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "auth.greenhouse.io",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "intercom",
@@ -271,7 +286,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.intercom.com",
-      "renews": true
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "klaviyo",
@@ -283,12 +299,13 @@
         "kind": "mcp",
         "server": "https://mcp.klaviyo.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.klaviyo.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "linear",
@@ -305,7 +322,8 @@
       "tools": 70,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.linear.app",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "mixpanel",
@@ -317,12 +335,13 @@
         "kind": "mcp",
         "server": "https://mcp.mixpanel.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
-      "signInHost": "auth.mixpanel.com",
-      "renews": true
+      "signInHost": "mixpanel.com",
+      "renews": true,
+      "problem": null
     },
     {
       "key": "monday",
@@ -334,12 +353,13 @@
         "kind": "mcp",
         "server": "https://mcp.monday.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "auth.monday.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "notion",
@@ -356,7 +376,8 @@
       "tools": 77,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.notion.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "pandadoc",
@@ -368,12 +389,13 @@
         "kind": "mcp",
         "server": "https://mcp.pandadoc.com/v1/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.pandadoc.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "paypal",
@@ -390,7 +412,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.paypal.com",
-      "renews": true
+      "renews": true,
+      "problem": "A bot check stands in front of its sign-in page, so this can't tell."
     },
     {
       "key": "pipedrive",
@@ -402,12 +425,13 @@
         "kind": "mcp",
         "server": "https://mcp.pipedrive.ai/mcp"
       },
-      "state": "drafted",
+      "state": "doubted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "oauth.pipedrive.com",
-      "renews": true
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "posthog",
@@ -419,12 +443,13 @@
         "kind": "mcp",
         "server": "https://mcp.posthog.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "oauth.posthog.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "ramp",
@@ -436,12 +461,13 @@
         "kind": "mcp",
         "server": "https://ramp-mcp-remote.ramp.com/mcp"
       },
-      "state": "drafted",
+      "state": "doubted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "ramp-mcp-remote.ramp.com",
-      "renews": true
+      "renews": true,
+      "problem": "The sign-in page failed (TypeError)."
     },
     {
       "key": "sentry",
@@ -453,12 +479,13 @@
         "kind": "mcp",
         "server": "https://mcp.sentry.dev/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.sentry.dev",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "square",
@@ -475,7 +502,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.squareup.com",
-      "renews": true
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "stripe",
@@ -487,12 +515,13 @@
         "kind": "mcp",
         "server": "https://mcp.stripe.com"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "access.stripe.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "supabase",
@@ -504,12 +533,13 @@
         "kind": "mcp",
         "server": "https://mcp.supabase.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "api.supabase.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     },
     {
       "key": "trello",
@@ -526,7 +556,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "auth.atlassian.com",
-      "renews": true
+      "renews": true,
+      "problem": "The sign-in page answered 202."
     },
     {
       "key": "typeform",
@@ -542,8 +573,9 @@
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
-      "signInHost": "api.typeform.com",
-      "renews": true
+      "signInHost": "admin.typeform.com",
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "vercel",
@@ -560,7 +592,8 @@
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "vercel.com",
-      "renews": true
+      "renews": true,
+      "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
     },
     {
       "key": "webflow",
@@ -572,12 +605,13 @@
         "kind": "mcp",
         "server": "https://mcp.webflow.com/mcp"
       },
-      "state": "drafted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
       "signInHost": "mcp.webflow.com",
-      "renews": true
+      "renews": true,
+      "problem": null
     }
   ]
 }

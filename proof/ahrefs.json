@@ -5,8 +5,22 @@
   "toolsHash": null,
   "lastChecked": "2026-11-06",
   "failures": 0,
-  "signInHost": "api.ahrefs.com",
+  "signInHost": "app.ahrefs.com",
   "registers": true,
   "renews": false,
-  "metadataHash": "sha256:de40008fda11438b4aa1b68e0759054a1519395c506226829aff9462ed09f321"
+  "metadataHash": "sha256:de40008fda11438b4aa1b68e0759054a1519395c506226829aff9462ed09f321",
+  "server": "https://api.ahrefs.com/mcp/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "A bot check stands in front of its sign-in page, so this can't tell.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://api.ahrefs.com/mcp/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address api.ahrefs.com is a subdomain of ahrefs.com, which is the company's main domain and matches the entry's company field.",
+      "The sign-in host app.ahrefs.com is also under ahrefs.com, so sign-ins stay with the same company.",
+      "An independent search found Ahrefs' official documentation listing https api.ahrefs.com mcp mcp as its remote MCP server, and the name and description (search and backlinks) are accurate."
+    ]
+  }
 }

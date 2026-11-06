@@ -5,8 +5,22 @@
   "toolsHash": null,
   "lastChecked": "2026-11-06",
   "failures": 0,
-  "signInHost": "api.close.com",
+  "signInHost": "app.close.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:fcc02fbeae3e67a90df8782f9a28488e5de42025367e4c34f3b21f79fe45ca4d"
+  "metadataHash": "sha256:fcc02fbeae3e67a90df8782f9a28488e5de42025367e4c34f3b21f79fe45ca4d",
+  "server": "https://mcp.close.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.close.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.close.com is a subdomain of close.com, which is Close's main domain, and the independent search confirms it as Close's official remote MCP server.",
+      "The sign-in host app.close.com is also on close.com, so sign-ins go to the same company.",
+      "The name, category and blurb ('Close', 'CRM') match the company and aren't misleading."
+    ]
+  }
 }

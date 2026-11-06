@@ -8,5 +8,19 @@
   "signInHost": "ramp-mcp-remote.ramp.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:2b62adb1f3bd41b8aa72d478fb1620b6b389e78fef605e1c89f51061cfcd0d0d"
+  "metadataHash": "sha256:2b62adb1f3bd41b8aa72d478fb1620b6b389e78fef605e1c89f51061cfcd0d0d",
+  "server": "https://ramp-mcp-remote.ramp.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "The sign-in page failed (TypeError).",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://ramp-mcp-remote.ramp.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "doubt",
+    "reasons": [
+      "The entry's server address is ramp-mcp-remote.ramp.com, but the independent search names https mcp.ramp.com mcp as Ramp's official remote MCP server, so the two don't match.",
+      "The search found no company documentation listing which domains Ramp owns, so the subdomain can't be confirmed as Ramp's.",
+      "The sign-in host is the same unconfirmed subdomain, so sign-ins would go to an address not verified as Ramp's."
+    ]
+  }
 }

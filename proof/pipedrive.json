@@ -8,5 +8,17 @@
   "signInHost": "oauth.pipedrive.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:cd798537ea5a14ca3511229dacda5d63af5b3305a7780670f8da733fecca02aa"
+  "metadataHash": "sha256:cd798537ea5a14ca3511229dacda5d63af5b3305a7780670f8da733fecca02aa",
+  "server": "https://mcp.pipedrive.ai/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.pipedrive.ai/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "doubt",
+    "reasons": [
+      "The review gave no readable answer."
+    ]
+  }
 }

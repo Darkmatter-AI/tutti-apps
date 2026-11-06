@@ -5,8 +5,22 @@
   "toolsHash": null,
   "lastChecked": "2026-11-06",
   "failures": 0,
-  "signInHost": "api.typeform.com",
+  "signInHost": "admin.typeform.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:6a648016f27e6acf4680e7c8b6e067cd39ae9d39a017a478036ad2a3d1f6635f"
+  "metadataHash": "sha256:6a648016f27e6acf4680e7c8b6e067cd39ae9d39a017a478036ad2a3d1f6635f",
+  "server": "https://api.typeform.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://api.typeform.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address api.typeform.com is a subdomain of typeform.com, which is the company's main domain, and Typeform's own documentation lists it as the official remote MCP server.",
+      "The sign-in host admin.typeform.com is also a subdomain of typeform.com, so sign-ins stay within the company's own domain.",
+      "The name, category and description (Typeform, forms) match what the company does and are not misleading."
+    ]
+  }
 }

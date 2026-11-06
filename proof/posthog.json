@@ -8,5 +8,19 @@
   "signInHost": "oauth.posthog.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:4fba4d7168863c760c1fcfc8011ff926fd73510259d0fada6edcb37af4f9ad6c"
+  "metadataHash": "sha256:4fba4d7168863c760c1fcfc8011ff926fd73510259d0fada6edcb37af4f9ad6c",
+  "server": "https://mcp.posthog.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.posthog.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The MCP server is mcp.posthog.com, a subdomain of posthog.com, which is plainly PostHog's main domain.",
+      "PostHog's own documentation names https mcp.posthog.com mcp as the official hosted MCP endpoint.",
+      "The sign-in host oauth.posthog.com is on the same company domain, so the sign-in server is not a third party's."
+    ]
+  }
 }

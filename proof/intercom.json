@@ -8,5 +8,19 @@
   "signInHost": "mcp.intercom.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:917daf6d3341d0fae500cc0af95574ecad04331f4abe02096e2ac516eaa0d1da"
+  "metadataHash": "sha256:917daf6d3341d0fae500cc0af95574ecad04331f4abe02096e2ac516eaa0d1da",
+  "server": "https://mcp.intercom.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.intercom.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.intercom.com is a subdomain of intercom.com, which is Intercom's main domain and matches the listed company.",
+      "An independent search found that Intercom documents https mcp.intercom.com mcp as its official US remote MCP endpoint.",
+      "The sign-in host is the same as the server host (mcp.intercom.com), so sign-ins do not go to a third party. The name and description are accurate, though the blurb is terse."
+    ]
+  }
 }

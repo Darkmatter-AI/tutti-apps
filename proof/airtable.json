@@ -8,5 +8,19 @@
   "signInHost": "airtable.com",
   "registers": true,
   "renews": null,
-  "metadataHash": "sha256:adc4aa124d680b477b1354b3fdaefa52929f9bf363aaaf4e3c118b0d5e77b98c"
+  "metadataHash": "sha256:adc4aa124d680b477b1354b3fdaefa52929f9bf363aaaf4e3c118b0d5e77b98c",
+  "server": "https://mcp.airtable.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.airtable.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is mcp.airtable.com, a subdomain of airtable.com, which is plainly Airtable's main domain.",
+      "The server's sign-in host is airtable.com, so sign-in goes to the same company and not a third party.",
+      "Airtable's own documentation names https mcp.airtable.com mcp as its official remote MCP server, and the name and description (Airtable, Tables) are not misleading."
+    ]
+  }
 }

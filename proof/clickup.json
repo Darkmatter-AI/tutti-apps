@@ -8,5 +8,19 @@
   "signInHost": "mcp.clickup.com",
   "registers": true,
   "renews": false,
-  "metadataHash": "sha256:ee778f2c63f7ef22836ee0582e39729d015402896e4629f4335e3ce7b36ae734"
+  "metadataHash": "sha256:ee778f2c63f7ef22836ee0582e39729d015402896e4629f4335e3ce7b36ae734",
+  "server": "https://mcp.clickup.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.clickup.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.clickup.com is a subdomain of clickup.com, which is ClickUp's main domain and matches the entry's company field.",
+      "An independent search confirmed that https mcp.clickup.com mcp is ClickUp's official remote MCP server address.",
+      "The sign-in host is the same as the server host (mcp.clickup.com), so sign-ins do not go to a third party. The name and 'Tasks' description are accurate for a project management app."
+    ]
+  }
 }

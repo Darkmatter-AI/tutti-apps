@@ -9,5 +9,17 @@
   "signInHost": "mcp.notion.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:a682ce93b3f523a9ec06dba7ab1ee53d11800d20531dabe6584c7ff21b8559ae"
+  "metadataHash": "sha256:a682ce93b3f523a9ec06dba7ab1ee53d11800d20531dabe6584c7ff21b8559ae",
+  "server": "https://mcp.notion.com/mcp",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.notion.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.notion.com is a subdomain of notion.com, which is Notion's main domain and matches the company listed in the entry.",
+      "Notion's own documentation gives https mcp.notion.com mcp as the official remote MCP server address.",
+      "The sign-in host is the same mcp.notion.com host, so sign-in stays with Notion and no third party is involved. The name and description (Docs and files) are accurate."
+    ]
+  }
 }

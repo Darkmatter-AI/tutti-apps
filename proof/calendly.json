@@ -8,5 +8,19 @@
   "signInHost": "calendly.com",
   "registers": true,
   "renews": null,
-  "metadataHash": "sha256:63b3aa7dc3bfd1fbd2a537c57721cf39d948c1eb0823edf9556e03d39454e97b"
+  "metadataHash": "sha256:63b3aa7dc3bfd1fbd2a537c57721cf39d948c1eb0823edf9556e03d39454e97b",
+  "server": "https://mcp.calendly.com/",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.calendly.com/",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server mcp.calendly.com is a subdomain of calendly.com, which is Calendly's main domain, and it matches the company named in the entry.",
+      "Calendly's own documentation describes https mcp.calendly.com as its official, company-hosted remote MCP server.",
+      "The sign-in host is calendly.com, which is the same company domain, so sign-ins are not sent to a third party."
+    ]
+  }
 }

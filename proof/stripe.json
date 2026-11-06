@@ -8,5 +8,19 @@
   "signInHost": "access.stripe.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:9e25c5c411828c364670c9f9c30c9edd99a86ddb7704701bbba12817eebeea15"
+  "metadataHash": "sha256:9e25c5c411828c364670c9f9c30c9edd99a86ddb7704701bbba12817eebeea15",
+  "server": "https://mcp.stripe.com",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.stripe.com",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.stripe.com is a subdomain of stripe.com, Stripe's main domain, and Stripe's documentation names it as its official remote MCP server.",
+      "The sign-in host access.stripe.com is also a subdomain of stripe.com, so sign-ins stay within Stripe's own domain.",
+      "The name Stripe and the description Payments match the company and are not misleading."
+    ]
+  }
 }

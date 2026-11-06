@@ -8,5 +8,19 @@
   "signInHost": "mcp.contentful.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:d19a3157ddff6f99e8a511523b892ecae7e28727248c656472e5fa4a83913bdf"
+  "metadataHash": "sha256:d19a3157ddff6f99e8a511523b892ecae7e28727248c656472e5fa4a83913bdf",
+  "server": "https://mcp.contentful.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.contentful.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.contentful.com is a subdomain of contentful.com, which is Contentful's main domain.",
+      "Contentful's official documentation lists https mcp.contentful.com mcp as its global remote MCP endpoint, matching the entry.",
+      "The sign-in host is the same as the server host, so no third party handles sign-ins."
+    ]
+  }
 }

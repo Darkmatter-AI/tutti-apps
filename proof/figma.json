@@ -5,8 +5,22 @@
   "toolsHash": null,
   "lastChecked": "2026-11-06",
   "failures": 0,
-  "signInHost": "api.figma.com",
+  "signInHost": "www.figma.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:2c56aa59510cbc2df470b55cbdbe3063cead362397501016c0cbf2090880d296"
+  "metadataHash": "sha256:2c56aa59510cbc2df470b55cbdbe3063cead362397501016c0cbf2090880d296",
+  "server": "https://mcp.figma.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "Registering answered 403.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.figma.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.figma.com is a subdomain of figma.com, which is Figma's main domain and matches the company field.",
+      "The sign-in host www.figma.com is also on Figma's own domain, so sign-ins are not sent to a third party.",
+      "Independent search confirms https mcp.figma.com mcp as Figma's official remote MCP server the name and description are not misleading."
+    ]
+  }
 }

@@ -8,5 +8,19 @@
   "signInHost": "mcp.klaviyo.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:85b8270f5cb4900847956c57ea504d14e3f64af9ad389d1292b0f3bbedf48da2"
+  "metadataHash": "sha256:85b8270f5cb4900847956c57ea504d14e3f64af9ad389d1292b0f3bbedf48da2",
+  "server": "https://mcp.klaviyo.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.klaviyo.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is mcp.klaviyo.com, a subdomain of klaviyo.com, which is plainly Klaviyo's main domain and matches the company field.",
+      "The sign-in host is the same mcp.klaviyo.com host, so no third-party sign-in server is involved.",
+      "An independent search identified https mcp.klaviyo.com mcp as Klaviyo's official remote MCP server, and the name and description (email marketing) are accurate."
+    ]
+  }
 }

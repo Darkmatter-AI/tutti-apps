@@ -8,5 +8,17 @@
   "signInHost": "bindings.mcp.cloudflare.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:b92aba5d6c9f14cf8eda86fb749697fe51fde00b970ba18d7402b0cddafeea80"
+  "metadataHash": "sha256:b92aba5d6c9f14cf8eda86fb749697fe51fde00b970ba18d7402b0cddafeea80",
+  "server": "https://bindings.mcp.cloudflare.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://bindings.mcp.cloudflare.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "doubt",
+    "reasons": [
+      "The review gave no readable answer."
+    ]
+  }
 }

@@ -8,5 +8,19 @@
   "signInHost": "mcp.pandadoc.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:70352fefc11b2af3423a8f3f312eec6ee9da8d2f62cfcebbc74f5f939441a037"
+  "metadataHash": "sha256:70352fefc11b2af3423a8f3f312eec6ee9da8d2f62cfcebbc74f5f939441a037",
+  "server": "https://mcp.pandadoc.com/v1/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.pandadoc.com/v1/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is a subdomain of pandadoc.com, which is plainly the company's main domain and matches the entry's company field.",
+      "PandaDoc's own documentation lists https mcp.pandadoc.com v1 mcp as its official global MCP endpoint.",
+      "The sign-in host is the same mcp.pandadoc.com host, so no third party handles sign-in, and the name and description (documents to sign) fit PandaDoc."
+    ]
+  }
 }

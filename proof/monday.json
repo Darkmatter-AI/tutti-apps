@@ -8,5 +8,19 @@
   "signInHost": "auth.monday.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:4e31c119a37c8ac6b53dd4016a0ad58f4e980b35ed9ead082042d289cd3b1656"
+  "metadataHash": "sha256:4e31c119a37c8ac6b53dd4016a0ad58f4e980b35ed9ead082042d289cd3b1656",
+  "server": "https://mcp.monday.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.monday.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is a subdomain of monday.com, the company's main domain, and monday.com's own documentation confirms https mcp.monday.com mcp as the official remote MCP endpoint.",
+      "The sign-in host auth.monday.com is also a subdomain of monday.com, so sign-in stays within the company's domain.",
+      "The name, category, and description (monday, projects, Boards) match the company's product and are not misleading."
+    ]
+  }
 }

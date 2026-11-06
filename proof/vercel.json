@@ -8,5 +8,19 @@
   "signInHost": "vercel.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:a06a1ca8684619675ac3e0a5ba846d80179e652e498f07b8e3d1db637aff420b"
+  "metadataHash": "sha256:a06a1ca8684619675ac3e0a5ba846d80179e652e498f07b8e3d1db637aff420b",
+  "server": "https://mcp.vercel.com",
+  "signInTried": "2026-11-06",
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.vercel.com",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.vercel.com is a subdomain of vercel.com, the company's main domain, and Vercel's own documentation names it as the official remote MCP server.",
+      "The sign-in host reported by the server is vercel.com, which matches the company, so the sign-in server is not a third party's.",
+      "The name Vercel and the description 'Deployments' accurately describe the service and are not misleading."
+    ]
+  }
 }

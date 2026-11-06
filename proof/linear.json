@@ -9,5 +9,17 @@
   "signInHost": "mcp.linear.app",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:dbb79248798eb69c2fa3c7f9abc01951e9487c9c3e7f6d98e22a5464f816b9dd"
+  "metadataHash": "sha256:dbb79248798eb69c2fa3c7f9abc01951e9487c9c3e7f6d98e22a5464f816b9dd",
+  "server": "https://mcp.linear.app/mcp",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.linear.app/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server host mcp.linear.app is a subdomain of linear.app, which is plainly Linear's main domain.",
+      "The sign-in host is the same mcp.linear.app, so authentication is not handed to a third party.",
+      "An independent search confirmed https mcp.linear.app mcp as Linear's official remote MCP endpoint, and the name and description (issues and projects) are accurate."
+    ]
+  }
 }

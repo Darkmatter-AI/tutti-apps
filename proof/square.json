@@ -8,5 +8,19 @@
   "signInHost": "mcp.squareup.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:c7986a672a59e71dffb965ad7756d466c22b8577a9c703acb981e2c66db69d60"
+  "metadataHash": "sha256:c7986a672a59e71dffb965ad7756d466c22b8577a9c703acb981e2c66db69d60",
+  "server": "https://mcp.squareup.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.squareup.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.squareup.com is a subdomain of squareup.com, which is Square's main domain and is listed by Block's documentation as one of its official domains.",
+      "An independent search identifies https mcp.squareup.com mcp as the official Square remote MCP server.",
+      "The sign-in host is the same as the server host, so sign-ins are not sent to a third party, and the name and description are accurate."
+    ]
+  }
 }

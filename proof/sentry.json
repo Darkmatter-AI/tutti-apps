@@ -8,5 +8,19 @@
   "signInHost": "mcp.sentry.dev",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:35bee4f3dc61858926cb9551230340669ab5fe90f196bd27d5472687a812b800"
+  "metadataHash": "sha256:35bee4f3dc61858926cb9551230340669ab5fe90f196bd27d5472687a812b800",
+  "server": "https://mcp.sentry.dev/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.sentry.dev/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The search identifies https mcp.sentry.dev mcp as Sentry's official remote MCP server, and it matches the entry's address exactly.",
+      "The sign-in host is mcp.sentry.dev, the same host as the server, so no third party handles sign-ins.",
+      "sentry.dev is a known Sentry domain, used for its developer site, and the name and short description are not misleading."
+    ]
+  }
 }

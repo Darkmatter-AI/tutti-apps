@@ -8,5 +8,19 @@
   "signInHost": "auth.atlassian.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:406e78c66ff9dac5e1efff76408073003a2f08010127a3f53bb4964180758a0a"
+  "metadataHash": "sha256:406e78c66ff9dac5e1efff76408073003a2f08010127a3f53bb4964180758a0a",
+  "server": "https://mcp.trello.com/v1",
+  "signInTried": "2026-11-06",
+  "signInProblem": "The sign-in page answered 202.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.trello.com/v1",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is mcp.trello.com, a subdomain of trello.com, which is plainly Trello's main domain, and an independent search confirms it as the official remote MCP address.",
+      "Sign-in goes to auth.atlassian.com. Atlassian owns Trello and Trello accounts use Atlassian sign-in, so this is the parent company's own auth server and not a third party.",
+      "The name and description (Trello, Boards, projects) match the product and are not misleading."
+    ]
+  }
 }

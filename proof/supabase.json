@@ -8,5 +8,19 @@
   "signInHost": "api.supabase.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:3e5aba6b8413a4a0f18626a3861802494fdacaf6dbc52c005f17eccf22924877"
+  "metadataHash": "sha256:3e5aba6b8413a4a0f18626a3861802494fdacaf6dbc52c005f17eccf22924877",
+  "server": "https://mcp.supabase.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.supabase.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The MCP server mcp.supabase.com is a subdomain of supabase.com, which is plainly Supabase's main domain.",
+      "The sign-in host api.supabase.com is on the same company domain, so no third party handles sign-ins.",
+      "An independent search found that Supabase's official remote MCP server is https mcp.supabase.com mcp. The name and the short description 'Database' are accurate."
+    ]
+  }
 }

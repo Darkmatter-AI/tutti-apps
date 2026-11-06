@@ -8,5 +8,19 @@
   "signInHost": "api.fireflies.ai",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:3999a97c0b0f5a75bfa6899f24b5b3f55397ce339db7b567c3210d8ca9bb9039"
+  "metadataHash": "sha256:3999a97c0b0f5a75bfa6899f24b5b3f55397ce339db7b567c3210d8ca9bb9039",
+  "server": "https://api.fireflies.ai/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://api.fireflies.ai/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address api.fireflies.ai is a subdomain of fireflies.ai, which is the company's main domain and is identified in its terms as the site of Fireflies.AI Corp.",
+      "Independent search confirms https api.fireflies.ai mcp is Fireflies' official remote MCP server.",
+      "The sign-in host is the same api.fireflies.ai host, so sign-ins do not go to a third party, and the name and description are accurate."
+    ]
+  }
 }

@@ -5,8 +5,22 @@
   "toolsHash": null,
   "lastChecked": "2026-11-06",
   "failures": 0,
-  "signInHost": "auth.mixpanel.com",
+  "signInHost": "mixpanel.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:f534132dfc18bf04df13ff278e7b5cc2f9da80058dd28419bb3761495b024bc4"
+  "metadataHash": "sha256:f534132dfc18bf04df13ff278e7b5cc2f9da80058dd28419bb3761495b024bc4",
+  "server": "https://mcp.mixpanel.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.mixpanel.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.mixpanel.com is a subdomain of mixpanel.com, which is Mixpanel's main domain and matches the company field.",
+      "Mixpanel's documentation lists https mcp.mixpanel.com mcp as its official US remote MCP server.",
+      "The sign-in host is mixpanel.com itself, so authentication stays with the company and not a third party. The name and description are accurate."
+    ]
+  }
 }

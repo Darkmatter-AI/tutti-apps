@@ -8,5 +8,19 @@
   "signInHost": "gitlab.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:d843a34081aeb27666eb0aab9e1da0155284163a1bceb94f1e99c1b7a8007699"
+  "metadataHash": "sha256:d843a34081aeb27666eb0aab9e1da0155284163a1bceb94f1e99c1b7a8007699",
+  "server": "https://gitlab.com/api/v4/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "A bot check stands in front of its sign-in page, so this can't tell.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://gitlab.com/api/v4/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address is on gitlab.com, which is GitLab's main domain, and the entry names that same domain as the company.",
+      "The sign-in host reported by the server is also gitlab.com, so no third party handles sign-ins.",
+      "GitLab's own documentation gives https gitlab.com api v4 mcp as its remote MCP endpoint, matching the entry's name and description."
+    ]
+  }
 }

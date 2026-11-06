@@ -8,5 +8,19 @@
   "signInHost": "auth.atlassian.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:2b5726f4d1b5607a8d23c02aa2f746d514b89ce4d445df6efa3fe3ec782e3c72"
+  "metadataHash": "sha256:2b5726f4d1b5607a8d23c02aa2f746d514b89ce4d445df6efa3fe3ec782e3c72",
+  "server": "https://mcp.atlassian.com/v2/mcp",
+  "signInTried": "2026-11-06",
+  "signInProblem": "The sign-in page answered 202.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.atlassian.com/v2/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.atlassian.com is a subdomain of atlassian.com, the company's main domain, and an independent search confirms it as Atlassian's official remote MCP endpoint.",
+      "The sign-in host auth.atlassian.com is also under atlassian.com, which Atlassian's documentation lists as a first-party domain.",
+      "The name and description (Jira and Confluence) accurately describe Atlassian's products, so nothing misleads."
+    ]
+  }
 }

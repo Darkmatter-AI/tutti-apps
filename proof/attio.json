@@ -8,5 +8,19 @@
   "signInHost": "app.attio.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:8c515f01e6bd96a25f7158d72be31e668dcf354f58af7c4cb5c3fd2f652aa1cf"
+  "metadataHash": "sha256:8c515f01e6bd96a25f7158d72be31e668dcf354f58af7c4cb5c3fd2f652aa1cf",
+  "server": "https://mcp.attio.com/mcp",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.attio.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address mcp.attio.com is a subdomain of attio.com, which Attio's own documentation identifies as its company domain.",
+      "Attio's documentation names https mcp.attio.com mcp as its official remote MCP server, matching the entry exactly.",
+      "The sign-in host app.attio.com is also a subdomain of attio.com, so the sign-in server belongs to the same company, and the name and CRM description fit."
+    ]
+  }
 }
