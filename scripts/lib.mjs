@@ -593,6 +593,45 @@ export async function openSignInPage(found, fetchFn = fetch) {
   }
 }
 
+const A_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const MOST_TOOLS = 5000;
+
+/**
+ * What Tutti's public list of first sign-ins says, keeping only what's well
+ * formed: it decides what goes on a public list, so it's read like any other
+ * answer from outside.
+ */
+export function readFirstSignIns(answer) {
+  const found = new Map();
+  for (const [key, entry] of Object.entries(answer?.apps ?? {})) {
+    const { firstSignIn, tools, server } = entry ?? {};
+    if (
+      KEY.test(key) &&
+      A_DAY.test(firstSignIn) &&
+      Number.isInteger(tools) &&
+      tools >= 0 &&
+      tools <= MOST_TOOLS &&
+      typeof server === "string"
+    ) {
+      found.set(key, { firstSignIn, tools, server });
+    }
+  }
+  return found;
+}
+
+/**
+ * Lists an app once someone has really connected it. It holds only for the
+ * address it was made on, and the first date stays. True if this listed it.
+ */
+export function noteFirstSignIn(proof, reported) {
+  if (proof.firstSignIn || !reported || reported.server !== proof.server) {
+    return false;
+  }
+  proof.firstSignIn = reported.firstSignIn;
+  proof.tools = reported.tools;
+  return true;
+}
+
 const proofPath = (proofDir, key) => join(proofDir, "proof", `${key}.json`);
 
 export function readProof(proofDir, key) {

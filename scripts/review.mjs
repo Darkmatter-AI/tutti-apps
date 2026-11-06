@@ -17,6 +17,29 @@ Answer with one JSON object and nothing else:
 {"verdict":"pass" or "doubt","reasons":["at most 3 short plain sentences, no links"]}
 Say "doubt" unless the facts support the entry. A search that found nothing isn't enough for "pass" unless the domain is plainly the company's main one.`;
 
+/**
+ * What the second agent decided. An answer nobody can read still counts as a
+ * doubt for a draft's reader, and `readable` says it decided nothing about the app.
+ */
+export function verdictFrom(answer) {
+  const parsed = firstObject(answer);
+  if (
+    (parsed?.verdict !== "pass" && parsed?.verdict !== "doubt") ||
+    !Array.isArray(parsed.reasons)
+  ) {
+    return {
+      readable: false,
+      verdict: "doubt",
+      reasons: ["The review gave no readable answer."],
+    };
+  }
+  return {
+    readable: true,
+    verdict: parsed.verdict,
+    reasons: parsed.reasons.slice(0, 3).map((reason) => plain(reason)),
+  };
+}
+
 /** Ask the second agent about one app. Exported so a draft can get the same review. */
 export async function reviewApp(app) {
   const found = await discover(app.connect.server);
@@ -31,14 +54,9 @@ export async function reviewApp(app) {
         : { problem: found.reason },
       independentSearch: search.slice(0, 1500),
     }),
-    maxTokens: 400,
+    maxTokens: 800,
   });
-  const parsed = firstObject(answer);
-  const verdict = parsed?.verdict === "pass" ? "pass" : "doubt";
-  const reasons = Array.isArray(parsed?.reasons)
-    ? parsed.reasons.slice(0, 3).map((reason) => plain(reason))
-    : ["The review gave no readable answer."];
-  return { verdict, reasons };
+  return verdictFrom(answer);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -53,13 +71,19 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     .slice(0, max);
 
   let doubted = 0;
+  let unreadable = 0;
   for (const app of waiting) {
     const proof = proofFor(proofDir, app);
-    const { verdict, reasons } = await reviewApp(app);
+    const { readable, verdict, reasons } = await reviewApp(app);
+    // Nothing was decided, so nothing is written and it comes up again tomorrow
+    if (!readable) {
+      unreadable += 1;
+      continue;
+    }
     proof.review = { date, server: app.connect.server, model: THINKING_MODEL, verdict, reasons };
     writeProof(proofDir, proof);
     doubted += verdict === "doubt" ? 1 : 0;
   }
 
-  console.log(`${waiting.length} apps reviewed, ${doubted} doubted.`);
+  console.log(`${waiting.length} apps reviewed, ${doubted} doubted, ${unreadable} unreadable.`);
 }

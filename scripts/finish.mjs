@@ -70,6 +70,12 @@ writeFileSync(
 for (const { name, problem } of nightly?.signInProblems ?? []) {
   sentences.push(`${plain(name, 40)}'s sign-in page didn't open for Tutti: ${plain(problem)}`);
 }
+for (const name of nightly?.nowListed ?? []) {
+  sentences.push(`Someone connected ${plain(name, 40)} for real, so it's listed. Tutti's copy of the list needs a sync.`);
+}
+if (nightly?.firstSignInsProblem) {
+  sentences.push(`First sign-ins couldn't be read: ${plain(nightly.firstSignInsProblem)}`);
+}
 // A step that never ran or was cut off is as wrong as one that failed
 for (const [step, outcome] of Object.entries(steps)) {
   if (outcome !== "success") {

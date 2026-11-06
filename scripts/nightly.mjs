@@ -1,6 +1,8 @@
 // Once a night, read every app's server and write what it found to the proof
 // branch. The first time an app's server reads well, also open its sign-in page
 // once, which registers a client named Tutti at that company and grants nothing.
+// It also asks Tutti which apps someone has really connected, which is the only
+// way onto the public list.
 // Usage: node nightly.mjs --proof <checkout of the proof branch>
 
 import {
@@ -8,16 +10,20 @@ import {
   daysSince,
   discover,
   listApps,
+  noteFirstSignIn,
   noteRun,
   openSignInPage,
   plain,
   pool,
   proofFor,
+  readFirstSignIns,
   today,
   writeProof,
 } from "./lib.mjs";
 
 const SIGN_IN_RETRY_DAYS = 7;
+const FIRST_SIGN_INS = "https://tuttiwork.com/api/apps/first-sign-ins";
+const FIRST_SIGN_INS_TIMEOUT_MS = 20_000;
 
 const proofDir = argument("--proof", ".proof");
 // Someone with write access has looked at this app and is happy with it
@@ -29,6 +35,24 @@ const apps = listApps(".")
   .map((entry) => entry.app);
 
 const signInProblems = [];
+const nowListed = [];
+
+/** Tutti not answering costs a night's wait and stops nothing else. */
+async function firstSignIns() {
+  try {
+    const response = await fetch(FIRST_SIGN_INS, {
+      signal: AbortSignal.timeout(FIRST_SIGN_INS_TIMEOUT_MS),
+    });
+    if (!response.ok) {
+      return { found: new Map(), problem: `Tutti answered ${response.status}.` };
+    }
+    return { found: readFirstSignIns(await response.json()) };
+  } catch {
+    return { found: new Map(), problem: "Tutti gave no answer that could be read." };
+  }
+}
+
+const { found: connected, problem: firstSignInsProblem } = await firstSignIns();
 
 /** One server's bad answer never stops the others being read. */
 async function reading(job) {
@@ -48,6 +72,10 @@ await pool(apps, 4, async (app) => {
     if (proof.review?.verdict === "doubt") {
       proof.review = { ...proof.review, verdict: "pass", acceptedOn: date };
     }
+  }
+
+  if (noteFirstSignIn(proof, connected.get(app.key))) {
+    nowListed.push(app.name);
   }
 
   const found = await reading(() => discover(app.connect.server));
@@ -100,5 +128,5 @@ await pool(apps, 4, async (app) => {
   writeProof(proofDir, proof);
 });
 
-noteRun(proofDir, "nightly", { signInProblems });
+noteRun(proofDir, "nightly", { signInProblems, nowListed, firstSignInsProblem });
 console.log(`${apps.length} servers read. ${signInProblems.length} sign-in pages didn't open.`);
