@@ -11,5 +11,16 @@
   "metadataHash": "sha256:24fcc09339bd14b5462c4bdbafc7a7316ef797efb02815a934fd60f60aa67a43",
   "server": "https://mcp.canva.com/mcp",
   "signInTried": "2026-11-06",
-  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.canva.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address and the sign-in host are both mcp.canva.com, a subdomain of Canva's main domain canva.com.",
+      "The search cited a different official path on api.canva.com, but that is also Canva's own domain, so it does not suggest a lookalike or a third party.",
+      "The name, category and description match Canva and are not misleading."
+    ]
+  }
 }

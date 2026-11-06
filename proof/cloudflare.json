@@ -11,5 +11,16 @@
   "metadataHash": "sha256:b92aba5d6c9f14cf8eda86fb749697fe51fde00b970ba18d7402b0cddafeea80",
   "server": "https://bindings.mcp.cloudflare.com/mcp",
   "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "signInPage": "2026-11-06",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://bindings.mcp.cloudflare.com/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The server address and sign-in host are both subdomains of cloudflare.com, which is plainly Cloudflare's main domain.",
+      "bindings.mcp.cloudflare.com matches Cloudflare's published set of MCP servers, where the Workers Bindings server covers Workers and storage, matching the blurb.",
+      "The search named a different primary server (mcp.cloudflare.com) but also said Cloudflare documents additional servers, so this is not a contradiction."
+    ]
+  }
 }

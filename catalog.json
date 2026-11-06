@@ -119,7 +119,7 @@
         "kind": "mcp",
         "server": "https://mcp.canva.com/mcp"
       },
-      "state": "doubted",
+      "state": "drafted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
@@ -173,7 +173,7 @@
         "kind": "mcp",
         "server": "https://bindings.mcp.cloudflare.com/mcp"
       },
-      "state": "doubted",
+      "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",
@@ -425,7 +425,7 @@
         "kind": "mcp",
         "server": "https://mcp.pipedrive.ai/mcp"
       },
-      "state": "doubted",
+      "state": "drafted",
       "firstSignIn": null,
       "tools": null,
       "lastChecked": "2026-11-06",

@@ -11,5 +11,16 @@
   "metadataHash": "sha256:cd798537ea5a14ca3511229dacda5d63af5b3305a7780670f8da733fecca02aa",
   "server": "https://mcp.pipedrive.ai/mcp",
   "signInTried": "2026-11-06",
-  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
+  "signInProblem": "It only lets in return addresses on its own list, so the company needs to add Tutti's.",
+  "review": {
+    "date": "2026-11-06",
+    "server": "https://mcp.pipedrive.ai/mcp",
+    "model": "anthropic/claude-sonnet-5.5",
+    "verdict": "pass",
+    "reasons": [
+      "The search found the address listed as Pipedrive's official remote MCP server in Pipedrive's own ChatGPT setup guide.",
+      "The server signs users in through oauth.pipedrive.com, which is on Pipedrive's main domain, so the sign-in server belongs to the company.",
+      "The entry's company domain, pipedrive.ai, is not Pipedrive's main domain and its ownership was not independently confirmed. The documentation and the sign-in host together still support the entry."
+    ]
+  }
 }
