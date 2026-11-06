@@ -1,0 +1,11 @@
+{
+  "key": "canva",
+  "name": "Canva",
+  "category": "design",
+  "blurb": "Design",
+  "company": "canva.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.canva.com/mcp"
+  }
+}

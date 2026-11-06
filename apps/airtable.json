@@ -1,0 +1,11 @@
+{
+  "key": "airtable",
+  "name": "Airtable",
+  "category": "docs",
+  "blurb": "Tables",
+  "company": "airtable.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.airtable.com/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "monday",
+  "name": "monday",
+  "category": "projects",
+  "blurb": "Boards",
+  "company": "monday.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.monday.com/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "webflow",
+  "name": "Webflow",
+  "category": "websites",
+  "blurb": "Websites",
+  "company": "webflow.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.webflow.com/mcp"
+  }
+}

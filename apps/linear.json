@@ -1,0 +1,11 @@
+{
+  "key": "linear",
+  "name": "Linear",
+  "category": "projects",
+  "blurb": "Issues and projects",
+  "company": "linear.app",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.linear.app/mcp"
+  }
+}

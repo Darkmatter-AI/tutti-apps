@@ -1,0 +1,11 @@
+{
+  "key": "sentry",
+  "name": "Sentry",
+  "category": "code",
+  "blurb": "Errors",
+  "company": "sentry.dev",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.sentry.dev/mcp"
+  }
+}

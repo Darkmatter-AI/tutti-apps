@@ -1,0 +1,11 @@
+{
+  "key": "klaviyo",
+  "name": "Klaviyo",
+  "category": "mail-and-calendar",
+  "blurb": "Email marketing",
+  "company": "klaviyo.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.klaviyo.com/mcp"
+  }
+}

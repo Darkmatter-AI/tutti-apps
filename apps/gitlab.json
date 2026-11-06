@@ -1,0 +1,11 @@
+{
+  "key": "gitlab",
+  "name": "GitLab",
+  "category": "code",
+  "blurb": "Code",
+  "company": "gitlab.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://gitlab.com/api/v4/mcp"
+  }
+}

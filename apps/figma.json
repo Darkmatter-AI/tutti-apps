@@ -1,0 +1,11 @@
+{
+  "key": "figma",
+  "name": "Figma",
+  "category": "design",
+  "blurb": "Design",
+  "company": "figma.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.figma.com/mcp"
+  }
+}

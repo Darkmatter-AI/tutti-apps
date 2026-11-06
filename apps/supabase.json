@@ -1,0 +1,11 @@
+{
+  "key": "supabase",
+  "name": "Supabase",
+  "category": "code",
+  "blurb": "Database",
+  "company": "supabase.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.supabase.com/mcp"
+  }
+}

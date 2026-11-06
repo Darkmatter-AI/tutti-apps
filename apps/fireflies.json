@@ -1,0 +1,11 @@
+{
+  "key": "fireflies",
+  "name": "Fireflies",
+  "category": "docs",
+  "blurb": "Meeting notes",
+  "company": "fireflies.ai",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://api.fireflies.ai/mcp"
+  }
+}

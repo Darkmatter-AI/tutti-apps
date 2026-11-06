@@ -1,0 +1,11 @@
+{
+  "key": "contentful",
+  "name": "Contentful",
+  "category": "websites",
+  "blurb": "Content",
+  "company": "contentful.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.contentful.com/mcp"
+  }
+}

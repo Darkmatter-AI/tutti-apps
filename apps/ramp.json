@@ -1,0 +1,11 @@
+{
+  "key": "ramp",
+  "name": "Ramp",
+  "category": "other",
+  "blurb": "Spend",
+  "company": "ramp.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://ramp-mcp-remote.ramp.com/mcp"
+  }
+}

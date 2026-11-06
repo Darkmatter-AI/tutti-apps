@@ -1,0 +1,11 @@
+{
+  "key": "close",
+  "name": "Close",
+  "category": "other",
+  "blurb": "CRM",
+  "company": "close.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.close.com/mcp"
+  }
+}

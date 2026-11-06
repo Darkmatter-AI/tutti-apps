@@ -1,0 +1,11 @@
+{
+  "key": "ahrefs",
+  "name": "Ahrefs",
+  "category": "analytics",
+  "blurb": "Search and backlinks",
+  "company": "ahrefs.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://api.ahrefs.com/mcp/mcp"
+  }
+}

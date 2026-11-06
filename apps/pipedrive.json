@@ -1,0 +1,11 @@
+{
+  "key": "pipedrive",
+  "name": "Pipedrive",
+  "category": "other",
+  "blurb": "CRM",
+  "company": "pipedrive.ai",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.pipedrive.ai/mcp"
+  }
+}

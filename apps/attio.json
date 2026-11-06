@@ -1,0 +1,11 @@
+{
+  "key": "attio",
+  "name": "Attio",
+  "category": "other",
+  "blurb": "CRM",
+  "company": "attio.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.attio.com/mcp"
+  }
+}

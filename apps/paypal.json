@@ -1,0 +1,11 @@
+{
+  "key": "paypal",
+  "name": "PayPal",
+  "category": "payments",
+  "blurb": "Payments",
+  "company": "paypal.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.paypal.com/mcp"
+  }
+}

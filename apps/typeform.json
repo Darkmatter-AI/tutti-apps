@@ -1,0 +1,11 @@
+{
+  "key": "typeform",
+  "name": "Typeform",
+  "category": "forms-and-booking",
+  "blurb": "Forms",
+  "company": "typeform.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://api.typeform.com/mcp"
+  }
+}

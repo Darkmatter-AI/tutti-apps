@@ -1,0 +1,11 @@
+{
+  "key": "vercel",
+  "name": "Vercel",
+  "category": "code",
+  "blurb": "Deployments",
+  "company": "vercel.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.vercel.com"
+  }
+}

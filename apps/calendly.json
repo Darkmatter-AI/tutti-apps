@@ -1,0 +1,11 @@
+{
+  "key": "calendly",
+  "name": "Calendly",
+  "category": "forms-and-booking",
+  "blurb": "Booking",
+  "company": "calendly.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.calendly.com/"
+  }
+}

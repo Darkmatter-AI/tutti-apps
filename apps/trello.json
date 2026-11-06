@@ -1,0 +1,11 @@
+{
+  "key": "trello",
+  "name": "Trello",
+  "category": "projects",
+  "blurb": "Boards",
+  "company": "trello.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.trello.com/v1"
+  }
+}

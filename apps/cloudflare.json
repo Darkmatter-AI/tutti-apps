@@ -1,0 +1,11 @@
+{
+  "key": "cloudflare",
+  "name": "Cloudflare",
+  "category": "code",
+  "blurb": "Workers and storage",
+  "company": "cloudflare.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://bindings.mcp.cloudflare.com/mcp"
+  }
+}

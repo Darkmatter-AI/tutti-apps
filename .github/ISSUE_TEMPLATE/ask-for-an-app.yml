@@ -1,0 +1,14 @@
+name: Ask for an app
+description: Ask for an app that isn't on the list yet.
+title: Ask for an app
+labels:
+  - asked-for
+body:
+  - type: input
+    id: app-name
+    attributes:
+      label: App name
+      description: Just the name. Agents look for its company's own server, most asked for first.
+      placeholder: ClickUp
+    validations:
+      required: true

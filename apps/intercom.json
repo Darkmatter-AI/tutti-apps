@@ -1,0 +1,11 @@
+{
+  "key": "intercom",
+  "name": "Intercom",
+  "category": "support",
+  "blurb": "Support",
+  "company": "intercom.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.intercom.com/mcp"
+  }
+}

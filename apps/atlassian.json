@@ -1,0 +1,11 @@
+{
+  "key": "atlassian",
+  "name": "Atlassian",
+  "category": "projects",
+  "blurb": "Jira and Confluence",
+  "company": "atlassian.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.atlassian.com/v2/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "amplitude",
+  "name": "Amplitude",
+  "category": "analytics",
+  "blurb": "Product analytics",
+  "company": "amplitude.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.amplitude.com/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "posthog",
+  "name": "PostHog",
+  "category": "analytics",
+  "blurb": "Product analytics",
+  "company": "posthog.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.posthog.com/mcp"
+  }
+}

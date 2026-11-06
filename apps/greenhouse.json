@@ -1,0 +1,11 @@
+{
+  "key": "greenhouse",
+  "name": "Greenhouse",
+  "category": "other",
+  "blurb": "Hiring",
+  "company": "greenhouse.io",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.greenhouse.io/mcp"
+  }
+}

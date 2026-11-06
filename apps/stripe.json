@@ -1,0 +1,11 @@
+{
+  "key": "stripe",
+  "name": "Stripe",
+  "category": "payments",
+  "blurb": "Payments",
+  "company": "stripe.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.stripe.com"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "square",
+  "name": "Square",
+  "category": "payments",
+  "blurb": "Payments",
+  "company": "squareup.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.squareup.com/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "mixpanel",
+  "name": "Mixpanel",
+  "category": "analytics",
+  "blurb": "Product analytics",
+  "company": "mixpanel.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.mixpanel.com/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "clickup",
+  "name": "ClickUp",
+  "category": "projects",
+  "blurb": "Tasks",
+  "company": "clickup.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.clickup.com/mcp"
+  }
+}

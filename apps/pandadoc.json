@@ -1,0 +1,11 @@
+{
+  "key": "pandadoc",
+  "name": "PandaDoc",
+  "category": "docs",
+  "blurb": "Documents to sign",
+  "company": "pandadoc.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.pandadoc.com/v1/mcp"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "key": "notion",
+  "name": "Notion",
+  "category": "docs",
+  "blurb": "Docs and files",
+  "company": "notion.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.notion.com/mcp"
+  }
+}
