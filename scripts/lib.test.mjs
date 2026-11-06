@@ -1,15 +1,22 @@
 import assert from "node:assert/strict";
+import { mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { test } from "node:test";
 import {
   crossFileErrors,
   discover,
   isPublicName,
+  listApps,
   openSignInPage,
   plain,
   pool,
+  proofFor,
   REDIRECT_URI,
   stateOf,
   validateApp,
+  writeProof,
+  writtenForm,
 } from "./lib.mjs";
 
 const good = () => ({
@@ -26,6 +33,64 @@ const errorsWith = (change) => {
   change(app);
   return validateApp("linear.json", app);
 };
+
+/** An apps folder holding these files, removed once the check is done. */
+function withFiles(files, check) {
+  const root = mkdtempSync(join(tmpdir(), "tutti-apps-"));
+  mkdirSync(join(root, "apps"));
+  try {
+    for (const [name, text] of Object.entries(files)) {
+      writeFileSync(join(root, "apps", name), text);
+    }
+    return check(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+test("a file written the one way reads", () => {
+  withFiles({ "linear.json": writtenForm(good()) }, (root) => {
+    assert.deepEqual(listApps(root)[0].errors, []);
+  });
+});
+
+test("a repeated field can't show a person one address and the parser another", () => {
+  const shown = writtenForm(good()).replace(/\n\}\n$/, "");
+  const text = `${shown},\n  "connect": { "kind": "mcp", "server": "https://mcp.linear.app/other" }\n}\n`;
+  withFiles({ "linear.json": text }, (root) => {
+    assert.match(listApps(root)[0].errors.join(" "), /no repeated fields/);
+  });
+});
+
+test("an escape can't hide an address either", () => {
+  const text = writtenForm(good()).replace("mcp.linear.app", "mcp.linea\\u0072.app");
+  withFiles({ "linear.json": text }, (root) => {
+    assert.match(listApps(root)[0].errors.join(" "), /no escapes/);
+  });
+});
+
+test("a link in place of a file is refused", () => {
+  withFiles({}, (root) => {
+    symlinkSync("/etc/passwd", join(root, "apps", "linear.json"));
+    assert.match(listApps(root)[0].errors.join(" "), /Only .json files/);
+  });
+});
+
+test("a file's name can't write to the check's log", () => {
+  withFiles({ "bad\n::stop-commands::x": "" }, (root) => {
+    assert.equal(listApps(root)[0].fileName.includes("\n"), false);
+  });
+});
+
+test("a country's ending or a tunnel isn't a company", () => {
+  for (const company of ["co.uk", "com.au", "ngrok-free.app", "x.nip.io"]) {
+    const errors = errorsWith((app) => {
+      app.company = company;
+      app.connect.server = `https://mcp.${company}/mcp`;
+    });
+    assert.match(errors.join(" "), /rent a name/);
+  }
+});
 
 test("a good app has no errors", () => {
   assert.deepEqual(validateApp("linear.json", good()), []);
@@ -172,6 +237,89 @@ test("the hash moves when the sign-in server moves", async () => {
   assert.notEqual(first.hash, moved.hash);
 });
 
+const WELL_KNOWN = "https://mcp.acme.example/.well-known/oauth-protected-resource/mcp";
+const SIGN_IN_METADATA = "https://auth.acme.example/.well-known/oauth-authorization-server";
+const GOOD_SIGN_IN = {
+  issuer: "https://auth.acme.example",
+  authorization_endpoint: "https://auth.acme.example/authorize",
+  token_endpoint: "https://auth.acme.example/token",
+  registration_endpoint: "https://auth.acme.example/register",
+};
+
+test("a server that's down for a moment doesn't look like one that moved", async () => {
+  for (const page of [WELL_KNOWN, SIGN_IN_METADATA]) {
+    const found = await discover(
+      ADDRESS,
+      server({ [page]: () => new Response("", { status: 503 }) })
+    );
+    assert.equal(found.ok, false);
+    assert.match(found.reason, /just now/);
+  }
+});
+
+test("having no resource page means asking the server itself", async () => {
+  const found = await discover(
+    ADDRESS,
+    server({
+      [WELL_KNOWN]: () => new Response("", { status: 404 }),
+      "https://mcp.acme.example/.well-known/oauth-authorization-server": () =>
+        json({ ...GOOD_SIGN_IN, issuer: "https://mcp.acme.example" }),
+    })
+  );
+  assert.equal(found.ok, true);
+});
+
+test("strange answers from a server give a reason, not an exception", async () => {
+  const found = await discover(
+    ADDRESS,
+    server({
+      [WELL_KNOWN]: () =>
+        json({
+          resource: ADDRESS,
+          authorization_servers: "https://auth.acme.example",
+          scopes_supported: 5,
+        }),
+      "https://mcp.acme.example/.well-known/oauth-authorization-server": () =>
+        json({ ...GOOD_SIGN_IN, issuer: "https://mcp.acme.example", scopes_supported: 5 }),
+    })
+  );
+  assert.equal(found.ok, true);
+  assert.equal(found.scope, undefined);
+});
+
+test("a sign-in server giving another's name is refused", async () => {
+  const found = await discover(
+    ADDRESS,
+    server({ [SIGN_IN_METADATA]: () => json({ ...GOOD_SIGN_IN, issuer: "https://other.example" }) })
+  );
+  assert.equal(found.ok, false);
+  assert.match(found.reason, /another server/);
+});
+
+test("sign-in addresses that aren't https on a public name are refused", async () => {
+  for (const field of ["authorization_endpoint", "token_endpoint", "registration_endpoint"]) {
+    for (const address of ["http://auth.acme.example/x", "https://169.254.169.254/x", 5]) {
+      const found = await discover(
+        ADDRESS,
+        server({ [SIGN_IN_METADATA]: () => json({ ...GOOD_SIGN_IN, [field]: address }) })
+      );
+      assert.equal(found.ok, false, `${field} ${address}`);
+      assert.match(found.reason, /public name/);
+    }
+  }
+});
+
+test("the sign-in host is where people really sign in", async () => {
+  const found = await discover(
+    ADDRESS,
+    server({
+      [SIGN_IN_METADATA]: () =>
+        json({ ...GOOD_SIGN_IN, authorization_endpoint: "https://login.acme.example/authorize" }),
+    })
+  );
+  assert.equal(found.signInHost, "login.acme.example");
+});
+
 test("a server that lets anyone in has nothing to connect to", async () => {
   const found = await discover(ADDRESS, server({ post: () => json({}) }));
   assert.equal(found.ok, false);
@@ -248,8 +396,8 @@ function signIn(page) {
       seen.registered = JSON.parse(init.body);
       return Promise.resolve(json({ client_id: "abc" }, 201));
     }
-    seen.opened = new URL(url);
-    return Promise.resolve(page());
+    seen.opened ??= new URL(url);
+    return Promise.resolve(page(String(url)));
   };
   return { seen, fetchFn };
 }
@@ -265,9 +413,37 @@ test("the sign-in page opens as Tutti, the way Tutti would open it", async () =>
   assert.ok(seen.opened.searchParams.get("state"));
 });
 
+const redirectTo = (location) => new Response(null, { status: 302, headers: { location } });
+
 test("a redirect on to a login page counts as open", async () => {
+  const { fetchFn } = signIn((url) =>
+    url === "https://auth.acme.example/login"
+      ? new Response("<form>Sign in</form>", { status: 200 })
+      : redirectTo("/login")
+  );
+  assert.deepEqual(await openSignInPage(METADATA, fetchFn), { ok: true });
+});
+
+test("a redirect to an error page doesn't count", async () => {
+  const { fetchFn } = signIn(() => redirectTo("/error?error=invalid_redirect_uri"));
+  const result = await openSignInPage(METADATA, fetchFn);
+  assert.equal(result.ok, false);
+  assert.match(result.reason, /its own list/);
+});
+
+test("a redirect to an unsafe address or round in circles doesn't count", async () => {
+  const unsafe = await openSignInPage(METADATA, signIn(() => redirectTo("http://a.example")).fetchFn);
+  assert.match(unsafe.reason, /unsafe/);
+  const circles = await openSignInPage(METADATA, signIn(() => redirectTo("/again")).fetchFn);
+  assert.match(circles.reason, /kept sending/);
+});
+
+test("words in a page's scripts aren't what the page says", async () => {
   const { fetchFn } = signIn(
-    () => new Response(null, { status: 302, headers: { location: "https://auth.acme.example/login" } })
+    () =>
+      new Response('<script>const codes = ["invalid_request"];</script><form>Sign in</form>', {
+        status: 200,
+      })
   );
   assert.deepEqual(await openSignInPage(METADATA, fetchFn), { ok: true });
 });
@@ -283,9 +459,28 @@ test("being sent straight back to Tutti doesn't count", async () => {
   assert.equal((await openSignInPage(METADATA, fetchFn)).ok, false);
 });
 
-test("a page refusing the return address doesn't count", async () => {
-  const { fetchFn } = signIn(() => new Response("Error: invalid_redirect_uri", { status: 200 }));
-  assert.equal((await openSignInPage(METADATA, fetchFn)).ok, false);
+test("a page refusing the return address says the company has to add it", async () => {
+  for (const page of [
+    () => new Response("Error: invalid_redirect_uri", { status: 200 }),
+    () => new Response("Invalid redirect URI.", { status: 400 }),
+  ]) {
+    const result = await openSignInPage(METADATA, signIn(page).fetchFn);
+    assert.equal(result.ok, false);
+    assert.match(result.reason, /its own list/);
+  }
+});
+
+test("registering refused over the return address says the same", async () => {
+  const fetchFn = () =>
+    Promise.resolve(json({ error: "invalid_redirect_uri", error_description: "not in the allowlist" }, 400));
+  assert.match((await openSignInPage(METADATA, fetchFn)).reason, /its own list/);
+});
+
+test("a bot check isn't a refusal, and isn't an answer either", async () => {
+  const { fetchFn } = signIn(() => new Response("<title>Just a moment...</title>", { status: 403 }));
+  const result = await openSignInPage(METADATA, fetchFn);
+  assert.equal(result.ok, false);
+  assert.match(result.reason, /bot check/);
 });
 
 test("a failed registration says so and shows nothing of the client", async () => {
@@ -293,4 +488,42 @@ test("a failed registration says so and shows nothing of the client", async () =
   const result = await openSignInPage(METADATA, fetchFn);
   assert.equal(result.ok, false);
   assert.match(result.reason, /403/);
+});
+
+test("proof only holds for the address it was earned on", () => {
+  const root = mkdtempSync(join(tmpdir(), "tutti-proof-"));
+  try {
+    const app = good();
+    writeProof(root, {
+      key: "linear",
+      server: app.connect.server,
+      firstSignIn: "2026-11-06",
+      signInPage: "2026-11-06",
+      tools: 70,
+      metadataHash: "sha256:a",
+    });
+    assert.equal(stateOf(proofFor(root, app)), "listed");
+
+    const moved = good();
+    moved.connect.server = "https://mcp.linear.app/elsewhere";
+    const fresh = proofFor(root, moved);
+    assert.equal(stateOf(fresh), "drafted");
+    assert.equal(fresh.firstSignIn, null);
+    assert.equal(fresh.metadataHash, undefined);
+    assert.equal(fresh.server, moved.connect.server);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("proof from before addresses were kept is taken as this address's", () => {
+  const root = mkdtempSync(join(tmpdir(), "tutti-proof-"));
+  try {
+    writeProof(root, { key: "linear", firstSignIn: "2026-11-06" });
+    const proof = proofFor(root, good());
+    assert.equal(proof.firstSignIn, "2026-11-06");
+    assert.equal(proof.server, good().connect.server);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

@@ -4,7 +4,7 @@
 // Usage: node review.mjs --proof <checkout of the proof branch> --max <n>
 
 import { pathToFileURL } from "node:url";
-import { argument, discover, listApps, noteRun, plain, readProof, today, writeProof } from "./lib.mjs";
+import { argument, discover, listApps, plain, proofFor, today, writeProof } from "./lib.mjs";
 import { ask, firstObject, searchForServer, THINKING_MODEL } from "./model.mjs";
 
 const SYSTEM = `You review one entry in a public list of apps. Each entry says which company runs an MCP server at an address, and people will send their sign-ins to that address.
@@ -49,20 +49,17 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const waiting = listApps(".")
     .filter((entry) => entry.errors.length === 0)
     .map((entry) => entry.app)
-    .filter((app) => readProof(proofDir, app.key).review?.server !== app.connect.server)
+    .filter((app) => proofFor(proofDir, app).review?.server !== app.connect.server)
     .slice(0, max);
 
-  const newlyDoubted = [];
+  let doubted = 0;
   for (const app of waiting) {
-    const proof = readProof(proofDir, app.key);
+    const proof = proofFor(proofDir, app);
     const { verdict, reasons } = await reviewApp(app);
     proof.review = { date, server: app.connect.server, model: THINKING_MODEL, verdict, reasons };
     writeProof(proofDir, proof);
-    if (verdict === "doubt") {
-      newlyDoubted.push({ key: app.key, name: app.name, problem: reasons[0] ?? "" });
-    }
+    doubted += verdict === "doubt" ? 1 : 0;
   }
 
-  noteRun(proofDir, "review", { reviewed: waiting.length, newlyDoubted });
-  console.log(`${waiting.length} apps reviewed, ${newlyDoubted.length} doubted.`);
+  console.log(`${waiting.length} apps reviewed, ${doubted} doubted.`);
 }

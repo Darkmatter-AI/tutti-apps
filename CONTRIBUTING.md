@@ -47,4 +47,6 @@ node scripts/check-files.mjs --root .
 
 The checks read your file and what its server says publicly about signing in, then lay that out for the person who reviews it. That person's one question is whether the address is really that company's own, because people will send their sign-ins to it. A merged app is checked every night from then on.
 
+Keep a change to `apps` to app files alone, written just as the format above shows, so what a person reads is exactly what the checks read.
+
 If you change anything in `scripts`, the checks still run the versions on `main` against your files, and your own scripts' tests run on their own.

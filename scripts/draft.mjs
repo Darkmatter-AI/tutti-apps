@@ -1,5 +1,6 @@
 // The drafting agent. It takes the most wanted app, looks for that company's own
-// server, and opens a pull request with one file. A person merges it or doesn't.
+// server, and pushes one file to a branch. It then opens an issue with a link
+// that starts the pull request, so a person looks before anything else happens.
 // Usage: node draft.mjs --proof <checkout of the proof branch> --max <n>
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -8,12 +9,14 @@ import {
   argument,
   CATEGORIES,
   discover,
+  isPublicName,
   isUnder,
   listApps,
   noteRun,
   plain,
   today,
   validateApp,
+  writtenForm,
 } from "./lib.mjs";
 import { ask, firstObject, searchForServer, THINKING_MODEL } from "./model.mjs";
 import { buildQueue, keyFromName } from "./queue.mjs";
@@ -70,7 +73,15 @@ async function askAboutApp(name) {
     user: JSON.stringify({ app: name, categories: CATEGORIES, webSearch: search.slice(0, 2000) }),
     maxTokens: 500,
   });
-  return firstObject(answer);
+  return { about: firstObject(answer), sources: sitesNamedIn(search) };
+}
+
+/** The sites a search leaned on, as names, so whoever decides can go and look. */
+function sitesNamedIn(search) {
+  const hosts = [...search.matchAll(/https:\/\/([a-z0-9.-]+)/gi)].map((match) =>
+    match[1].toLowerCase()
+  );
+  return [...new Set(hosts)].filter(isPublicName).slice(0, 5);
 }
 
 function candidateAddresses(about) {
@@ -130,11 +141,11 @@ async function findServer(wantedKey, about) {
 const comment = (number, body) =>
   github(`/issues/${number}/comments`, { method: "POST", body: { body } });
 
-async function openPullRequest(entry, app, found) {
+async function offerForReview(entry, app, found, sources) {
   const branch = `draft/${app.key}`;
   const main = await github("/git/ref/heads/main");
-  // Left over from a draft someone closed: no open pull request uses this name,
-  // since the queue skips those
+  // Left over from a draft someone closed: nothing open uses this name, since the
+  // queue skips those
   await github(`/git/refs/heads/${branch}`, { method: "DELETE", missingIsFine: true });
   await github("/git/refs", {
     method: "POST",
@@ -143,41 +154,44 @@ async function openPullRequest(entry, app, found) {
   await github(`/contents/apps/${app.key}.json`, {
     method: "PUT",
     body: {
-      message: `Draft ${app.name}`,
+      message: `Add ${app.name}`,
       branch,
-      content: Buffer.from(`${JSON.stringify(app, null, 2)}\n`).toString("base64"),
+      content: Buffer.from(writtenForm(app)).toString("base64"),
     },
   });
 
   const { verdict, reasons } = await reviewApp(app);
-  const closes = entry.issues.map((number) => `Closes #${number}.`).join(" ");
-  const pull = await github("/pulls", {
+  const issue = await github("/issues", {
     method: "POST",
+    body: { title: `Add ${app.name}?`, labels: ["agent-draft"] },
+  });
+  const closes = [issue.number, ...entry.issues].map((number) => `Closes #${number}.`).join(" ");
+  const start = new URL(`https://github.com/${repository}/compare/main...${branch}`);
+  start.searchParams.set("quick_pull", "1");
+  start.searchParams.set("title", `Add ${app.name}`);
+  start.searchParams.set("body", `An agent drafted this. ${closes}`);
+  await github(`/issues/${issue.number}`, {
+    method: "PATCH",
     body: {
-      title: `Add ${app.name}`,
-      head: branch,
-      base: "main",
       body: [
-        `An agent drafted this. ${closes}`,
+        "An agent found this app's server. It isn't on the list yet.",
         "",
         `Server: ${new URL(app.connect.server).hostname}. It signs in at ${plain(found.signInHost, 100)}.`,
         "",
         `The second agent says **${verdict}**: ${reasons.join(" ")}`,
         "",
-        "Merge this only if the address is really that company's own.",
+        sources.length > 0
+          ? `The search named these sites: ${sources.join(", ")}.`
+          : "The search named no sites, so check this one yourself.",
+        "",
+        `Is that address really the company's own? If it is, [start the pull request](${start.href}) and merge it. If it isn't, close this issue.`,
       ].join("\n"),
     },
   });
-  await github(`/issues/${pull.number}/labels`, {
-    method: "POST",
-    body: { labels: ["agent-draft"] },
-  });
-  // A pull request opened by this job starts no checks by itself
-  await github("/actions/workflows/check.yml/dispatches", {
-    method: "POST",
-    body: { ref: branch },
-  });
-  return pull.number;
+  for (const number of entry.issues) {
+    await comment(number, `An agent found a server for this. Someone will look at it in #${issue.number}.`);
+  }
+  return issue.number;
 }
 
 async function tell(entry, words, label) {
@@ -191,13 +205,14 @@ async function tell(entry, words, label) {
 
 const apps = listApps(".");
 const existingKeys = new Set(apps.map((entry) => entry.fileName.replace(/\.json$/, "")));
-const openPulls = await github("/pulls?state=open&per_page=100");
-for (const pull of openPulls) {
-  if (pull.head.ref.startsWith("draft/")) {
-    existingKeys.add(pull.head.ref.slice("draft/".length));
+const drafts = await github("/issues?labels=agent-draft&state=open&per_page=100");
+for (const draft of drafts) {
+  const key = /compare\/main\.\.\.draft\/([a-z0-9-]+)/.exec(draft.body ?? "")?.[1];
+  if (key) {
+    existingKeys.add(key);
   }
 }
-const openDrafts = openPulls.filter((pull) => pull.head.ref.startsWith("draft/")).length;
+const openDrafts = drafts.length;
 
 const issues = (await github("/issues?labels=asked-for&state=open&per_page=100")).filter(
   (issue) => !issue.pull_request
@@ -210,13 +225,13 @@ const room = Math.max(0, Math.min(max, MAX_OPEN_DRAFTS - openDrafts));
 const outcomes = [];
 
 for (const entry of queue.slice(0, room)) {
-  const about = await askAboutApp(entry.name);
+  const { about, sources } = await askAboutApp(entry.name);
   const wantedKey = keyFromName(entry.name);
   const { app, found, needsRegisteredApp } = await findServer(wantedKey, about ?? {});
 
   if (app) {
-    const pull = await openPullRequest(entry, app, found);
-    outcomes.push({ key: wantedKey, outcome: "drafted", pull });
+    const issue = await offerForReview(entry, app, found, sources);
+    outcomes.push({ key: wantedKey, outcome: "drafted", issue });
   } else if (needsRegisteredApp) {
     await tell(
       entry,

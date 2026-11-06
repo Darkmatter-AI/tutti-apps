@@ -1,11 +1,12 @@
 name: Check
 
-# Read-only and without secrets, because anyone can open a pull request. Never
-# change this to pull_request_target.
+# pull_request_target, so this file and its scripts come from main. A plain
+# pull_request runs the change's own copy of the workflow, which could turn itself
+# green. It stays safe because the job holds no secrets, its token can only read,
+# and it reads the change as data. Never run, install or build anything from
+# .change here: tests.yml is where the change's code runs.
 on:
-  pull_request:
-  # A pull request an agent opens starts no checks by itself, so it asks for them
-  workflow_dispatch:
+  pull_request_target:
 
 permissions:
   contents: read
@@ -19,31 +20,24 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      # The scripts come from main, so a change can't weaken its own checks. This
-      # job runs none of the change's code
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ github.event.pull_request.base.sha || 'main' }}
-          path: .main
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
+          path: .change
+          fetch-depth: 2
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
+      - name: Keep app changes to app files
+        working-directory: .change
+        run: |
+          changed="$(git diff --name-only HEAD^1 HEAD)"
+          if grep -q '^apps/' <<<"$changed" && grep -qv '^apps/' <<<"$changed"; then
+            echo "::error::A change to apps can't touch anything else, so whoever merges it has one thing to read."
+            exit 1
+          fi
       - name: Read the app files
-        run: node .main/scripts/check-files.mjs --root .
+        run: node scripts/check-files.mjs --root .change
       - name: Read what their servers say
-        run: node .main/scripts/check-servers.mjs --root . --base .main
-
-  # On its own machine, because this does run the change's code
-  tests:
-    name: tests
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version: 24
-      - run: node --test "scripts/*.test.mjs"
+        run: node scripts/check-servers.mjs --root .change --base .
