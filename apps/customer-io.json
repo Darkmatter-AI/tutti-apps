@@ -1,0 +1,11 @@
+{
+  "key": "customer-io",
+  "name": "Customer.io",
+  "category": "mail-and-calendar",
+  "blurb": "Messaging automation platform",
+  "company": "customer.io",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.customer.io/mcp"
+  }
+}
