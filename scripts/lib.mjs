@@ -56,20 +56,29 @@ const RENTED_HOSTS = [
   "githubusercontent.com",
   "glitch.me",
   "herokuapp.com",
+  "loca.lt",
   "modal.run",
   "netlify.app",
+  "ngrok-free.app",
+  "ngrok-free.dev",
   "ngrok.app",
   "ngrok.io",
+  "nip.io",
   "onrender.com",
   "pages.dev",
   "railway.app",
   "replit.app",
   "run.app",
+  "serveo.net",
+  "sslip.io",
   "trycloudflare.com",
   "vercel.app",
   "web.app",
   "workers.dev",
 ];
+
+// A country's own ending, like co.uk, which nobody can run a company on
+const COUNTRY_ENDING = /^(ac|co|com|edu|gov|ne|net|or|org)\.[a-z]{2}$/;
 
 // A server's address naming another client was made for that client
 const OTHER_CLIENT = /(^|[/_-])(anthropic|chatgpt|claude|copilot|cursor|openai)([/_-]|$)/i;
@@ -123,7 +132,7 @@ export function validateApp(fileName, app) {
   const errors = [];
   for (const field of Object.keys(app)) {
     if (!APP_FIELDS.includes(field)) {
-      errors.push(`Unknown field: ${field}.`);
+      errors.push(`Unknown field: ${plain(field, 40)}.`);
     }
   }
   if (typeof app.key !== "string" || !KEY.test(app.key)) {
@@ -142,7 +151,10 @@ export function validateApp(fileName, app) {
   }
   if (typeof app.company !== "string" || !isPublicName(app.company)) {
     errors.push("company must be the domain of the company that runs the server.");
-  } else if (RENTED_HOSTS.some((host) => isUnder(app.company, host))) {
+  } else if (
+    COUNTRY_ENDING.test(app.company) ||
+    RENTED_HOSTS.some((host) => isUnder(app.company, host))
+  ) {
     errors.push("company can't be a domain anyone can rent a name on.");
   }
   const connect = app.connect;
@@ -152,7 +164,7 @@ export function validateApp(fileName, app) {
   }
   for (const field of Object.keys(connect)) {
     if (!CONNECT_FIELDS.includes(field)) {
-      errors.push(`Unknown field: connect.${field}.`);
+      errors.push(`Unknown field: connect.${plain(field, 40)}.`);
     }
   }
   if (connect.kind !== "mcp") {
@@ -162,23 +174,38 @@ export function validateApp(fileName, app) {
   return errors;
 }
 
+/**
+ * The one way an app file is written. A person reads the text and the parser
+ * reads the value, so a repeated field or an escape could show them different
+ * addresses. This way they can't differ.
+ */
+export const writtenForm = (app) => `${JSON.stringify(app, null, 2)}\n`;
+
 /** Every app file under a folder, whether it reads or not. */
 export function listApps(root) {
   const folder = join(root, "apps");
-  return readdirSync(folder)
-    .sort()
-    .map((fileName) => {
-      if (!fileName.endsWith(".json")) {
+  return readdirSync(folder, { withFileTypes: true })
+    .sort((a, b) => (a.name < b.name ? -1 : 1))
+    .map((entry) => {
+      // These names come from strangers, and the checks print them
+      const fileName = plain(entry.name, 80);
+      if (!entry.isFile() || !entry.name.endsWith(".json")) {
         return { fileName, errors: ["Only .json files belong in apps."] };
       }
-      const text = readFileSync(join(folder, fileName), "utf8");
+      const text = readFileSync(join(folder, entry.name), "utf8");
       let app;
       try {
         app = JSON.parse(text);
       } catch {
         return { fileName, text, errors: ["The file isn't valid JSON."] };
       }
-      return { fileName, text, app, errors: validateApp(fileName, app) };
+      const errors = validateApp(entry.name, app);
+      if (text !== writtenForm(app)) {
+        errors.push(
+          "Write the file with two spaces, one field to a line, no repeated fields and no escapes."
+        );
+      }
+      return { fileName, text, app, errors };
     });
 }
 
@@ -217,7 +244,13 @@ export function plain(text, maxLength = 200) {
 
 const timeout = () => AbortSignal.timeout(TIMEOUT_MS);
 
+/**
+ * `unavailable` means the answer says nothing about how the server is set up: it
+ * was down or busy. Treating that as "not there" would look like a server whose
+ * sign-in moved.
+ */
 async function readJson(url, fetchFn) {
+  let text;
   try {
     const response = await fetchFn(url, {
       headers: {
@@ -227,28 +260,55 @@ async function readJson(url, fetchFn) {
       },
       signal: timeout(),
     });
+    if (response.status === 408 || response.status === 429 || response.status >= 500) {
+      await response.body?.cancel();
+      return { unavailable: true };
+    }
     if (!response.ok) {
-      return undefined;
+      await response.body?.cancel();
+      return {};
     }
-    const text = await response.text();
-    if (text.length > MAX_BODY_CHARS) {
-      return undefined;
-    }
-    const json = JSON.parse(text);
-    return json !== null && typeof json === "object" ? json : undefined;
+    text = await response.text();
   } catch {
-    return undefined;
+    return { unavailable: true };
+  }
+  if (text.length > MAX_BODY_CHARS) {
+    return {};
+  }
+  try {
+    const json = JSON.parse(text);
+    return json !== null && typeof json === "object" ? { json } : {};
+  } catch {
+    return {};
   }
 }
 
 async function firstJson(urls, fetchFn) {
   for (const url of urls) {
-    const json = await readJson(url, fetchFn);
-    if (json) {
-      return json;
+    const result = await readJson(url, fetchFn);
+    if (result.json || result.unavailable) {
+      return result;
     }
   }
-  return undefined;
+  return {};
+}
+
+const stringsIn = (value) =>
+  Array.isArray(value) ? value.filter((item) => typeof item === "string") : [];
+
+/** An address from a server's own words that people's sign-ins can safely go to. */
+function isSafeAddress(address) {
+  if (typeof address !== "string") {
+    return false;
+  }
+  try {
+    const url = new URL(address);
+    return (
+      url.protocol === "https:" && !url.username && !url.password && isPublicName(url.hostname)
+    );
+  } catch {
+    return false;
+  }
 }
 
 const withoutSlash = (path) => path.replace(/\/+$/, "");
@@ -286,7 +346,17 @@ function namesThisServer(resource, serverUrl) {
   }
 }
 
+function isSameAddress(address, url) {
+  try {
+    return withoutSlash(new URL(address).href) === withoutSlash(url.href);
+  } catch {
+    return false;
+  }
+}
+
 const sha256 = (text) => createHash("sha256").update(text).digest();
+
+const UNAVAILABLE = "Its sign-in details didn't load just now.";
 
 const INITIALIZE = {
   jsonrpc: "2.0",
@@ -337,7 +407,11 @@ export async function discover(serverAddress, fetchFn = fetch) {
     return failed(`It answered ${status} rather than asking for a sign-in.`);
   }
 
-  const resourceMetadata = await firstJson(resourceAddresses(serverUrl), fetchFn);
+  const resource = await firstJson(resourceAddresses(serverUrl), fetchFn);
+  if (resource.unavailable) {
+    return failed(UNAVAILABLE);
+  }
+  const resourceMetadata = resource.json;
   if (resourceMetadata && !namesThisServer(resourceMetadata.resource, serverUrl)) {
     return failed("It names a resource other than itself.");
   }
@@ -345,7 +419,7 @@ export async function discover(serverAddress, fetchFn = fetch) {
   let authorizationServer;
   try {
     authorizationServer = new URL(
-      resourceMetadata?.authorization_servers?.[0] ?? "/",
+      stringsIn(resourceMetadata?.authorization_servers)[0] ?? "/",
       serverAddress
     );
   } catch {
@@ -355,17 +429,31 @@ export async function discover(serverAddress, fetchFn = fetch) {
     return failed("Its sign-in server must be https on a public name.");
   }
 
-  const metadata = await firstJson(signInAddresses(authorizationServer), fetchFn);
+  const signIn = await firstJson(signInAddresses(authorizationServer), fetchFn);
+  if (signIn.unavailable) {
+    return failed(UNAVAILABLE);
+  }
+  const metadata = signIn.json;
   if (!metadata?.authorization_endpoint || !metadata?.token_endpoint) {
     return failed("It doesn't say where to sign in.");
+  }
+  if (metadata.issuer !== undefined && !isSameAddress(metadata.issuer, authorizationServer)) {
+    return failed("Its sign-in server gives another server's name as its own.");
+  }
+  const endpoints = [metadata.authorization_endpoint, metadata.token_endpoint];
+  if (metadata.registration_endpoint) {
+    endpoints.push(metadata.registration_endpoint);
+  }
+  if (!endpoints.every(isSafeAddress)) {
+    return failed("Its sign-in addresses must be https on a public name.");
   }
   const challenges = metadata.code_challenge_methods_supported;
   if (Array.isArray(challenges) && !challenges.includes("S256")) {
     return failed("Its sign-in server doesn't support S256.");
   }
 
-  const scopes = new Set(resourceMetadata?.scopes_supported ?? []);
-  if (metadata.scopes_supported?.includes("offline_access")) {
+  const scopes = new Set(stringsIn(resourceMetadata?.scopes_supported));
+  if (stringsIn(metadata.scopes_supported).includes("offline_access")) {
     scopes.add("offline_access");
   }
   const grants = metadata.grant_types_supported;
@@ -381,7 +469,7 @@ export async function discover(serverAddress, fetchFn = fetch) {
   return {
     ok: true,
     status,
-    signInHost: authorizationServer.hostname,
+    signInHost: new URL(metadata.authorization_endpoint).hostname,
     registers: Boolean(metadata.registration_endpoint),
     renews: Array.isArray(grants) ? grants.includes("refresh_token") : null,
     hash: `sha256:${sha256(signature).toString("hex")}`,
@@ -393,6 +481,16 @@ export async function discover(serverAddress, fetchFn = fetch) {
 
 const NOT_ACCEPTED =
   /invalid[_ ](request|redirect|client|scope)|redirect[_ ]?ur[il].{0,40}(mismatch|invalid|not allowed|not registered)|unauthorized_client/i;
+const BOT_CHECK = /just a moment|challenge-platform|cf-chl|captcha/i;
+const MAX_REDIRECTS = 4;
+
+// What the page says, not what its scripts might show in some other state
+const withoutScripts = (html) =>
+  html.replace(/<script\b[\s\S]*?<\/script\s*>/gi, " ").replace(/<style\b[\s\S]*?<\/style\s*>/gi, " ");
+
+const ONLY_ITS_OWN_LIST =
+  "It only lets in return addresses on its own list, so the company needs to add Tutti's.";
+const BEHIND_A_BOT_CHECK = "A bot check stands in front of its sign-in page, so this can't tell.";
 
 /**
  * Register a client named Tutti at the company and load its sign-in page, the
@@ -401,8 +499,9 @@ const NOT_ACCEPTED =
  */
 export async function openSignInPage(found, fetchFn = fetch) {
   const { metadata } = found;
-  const secretAllowed =
-    metadata.token_endpoint_auth_methods_supported?.includes("client_secret_post");
+  const secretAllowed = stringsIn(metadata.token_endpoint_auth_methods_supported).includes(
+    "client_secret_post"
+  );
 
   let client;
   try {
@@ -420,7 +519,13 @@ export async function openSignInPage(found, fetchFn = fetch) {
       signal: timeout(),
     });
     if (!registered.ok) {
-      return { ok: false, reason: `Registering answered ${registered.status}.` };
+      const words = (await registered.text()).slice(0, 2000);
+      return {
+        ok: false,
+        reason: /redirect/i.test(words)
+          ? ONLY_ITS_OWN_LIST
+          : `Registering answered ${registered.status}.`,
+      };
     }
     client = await registered.json();
   } catch (error) {
@@ -446,26 +551,43 @@ export async function openSignInPage(found, fetchFn = fetch) {
   }
 
   try {
-    const page = await fetchFn(signInUrl, {
-      headers: { accept: "text/html", "user-agent": USER_AGENT },
-      redirect: "manual",
-      signal: timeout(),
-    });
-    if (page.status >= 300 && page.status < 400) {
-      const location = page.headers.get("location") ?? "";
-      await page.body?.cancel();
-      return location.startsWith(REDIRECT_URI)
-        ? { ok: false, reason: "The sign-in page sent Tutti straight back with an error." }
-        : { ok: true };
+    let address = signInUrl;
+    for (let hop = 0; hop < MAX_REDIRECTS; hop += 1) {
+      const page = await fetchFn(address, {
+        headers: { accept: "text/html", "user-agent": USER_AGENT },
+        redirect: "manual",
+        signal: timeout(),
+      });
+      if (page.status >= 300 && page.status < 400) {
+        await page.body?.cancel();
+        const next = new URL(page.headers.get("location") ?? "", address);
+        if (next.href.startsWith(REDIRECT_URI) || next.searchParams.has("error")) {
+          return {
+            ok: false,
+            reason: NOT_ACCEPTED.test(next.search)
+              ? ONLY_ITS_OWN_LIST
+              : "The sign-in page sent Tutti straight back with an error.",
+          };
+        }
+        if (!isSafeAddress(next.href)) {
+          return { ok: false, reason: "The sign-in page sent Tutti to an unsafe address." };
+        }
+        address = next;
+        continue;
+      }
+      const body = (await page.text()).slice(0, MAX_BODY_CHARS);
+      if (NOT_ACCEPTED.test(withoutScripts(body))) {
+        return { ok: false, reason: ONLY_ITS_OWN_LIST };
+      }
+      if (page.status === 200) {
+        return { ok: true };
+      }
+      return {
+        ok: false,
+        reason: BOT_CHECK.test(body) ? BEHIND_A_BOT_CHECK : `The sign-in page answered ${page.status}.`,
+      };
     }
-    if (page.status !== 200) {
-      await page.body?.cancel();
-      return { ok: false, reason: `The sign-in page answered ${page.status}.` };
-    }
-    const body = (await page.text()).slice(0, MAX_BODY_CHARS);
-    return NOT_ACCEPTED.test(body)
-      ? { ok: false, reason: "The sign-in page refused Tutti's return address." }
-      : { ok: true };
+    return { ok: false, reason: "The sign-in page kept sending Tutti elsewhere." };
   } catch (error) {
     return { ok: false, reason: `The sign-in page failed (${plain(error?.name, 40)}).` };
   }
@@ -479,6 +601,19 @@ export function readProof(proofDir, key) {
   } catch {
     return { key, firstSignIn: null, tools: null, toolsHash: null, lastChecked: null };
   }
+}
+
+/**
+ * An app's proof, which only holds for the address it was earned on. If the
+ * address moved, everything about it starts again.
+ */
+export function proofFor(proofDir, app) {
+  const proof = readProof(proofDir, app.key);
+  const { server } = app.connect;
+  if (proof.server && proof.server !== server) {
+    return { key: app.key, server, firstSignIn: null, tools: null, toolsHash: null, lastChecked: null };
+  }
+  return { ...proof, server };
 }
 
 export function writeProof(proofDir, proof) {

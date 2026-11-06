@@ -4,13 +4,19 @@
 import { daysSince } from "./lib.mjs";
 
 const ASKED_NAME = /^[\p{L}\p{N}][\p{L}\p{N} .&+'-]{0,39}$/u;
+const MAX_WORDS_IN_A_NAME = 4;
+// fal.ai and Cal.com are names. mcp.someone.com is someone suggesting an address
+const AN_ADDRESS = /\.[^ ]*\./;
 const LOOK_AGAIN_DAYS = 30;
 
 /** The app name in an issue the form wrote, or undefined for anything else. */
 export function nameFromIssue(body) {
   const match = /^### App name\s*\n+([^\n]+)/m.exec(String(body ?? ""));
   const name = match?.[1]?.trim();
-  return name && ASKED_NAME.test(name) ? name : undefined;
+  if (!name || !ASKED_NAME.test(name) || AN_ADDRESS.test(name)) {
+    return undefined;
+  }
+  return name.split(/\s+/).length <= MAX_WORDS_IN_A_NAME ? name : undefined;
 }
 
 export const keyFromName = (name) =>

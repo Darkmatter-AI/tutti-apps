@@ -12,13 +12,12 @@ import {
   openSignInPage,
   plain,
   pool,
-  readProof,
+  proofFor,
   today,
   writeProof,
 } from "./lib.mjs";
 
 const SIGN_IN_RETRY_DAYS = 7;
-const FAILING_AFTER_NIGHTS = 2;
 
 const proofDir = argument("--proof", ".proof");
 // Someone with write access has looked at this app and is happy with it
@@ -29,12 +28,19 @@ const apps = listApps(".")
   .filter((entry) => entry.errors.length === 0)
   .map((entry) => entry.app);
 
-const newlyFailing = [];
-const newlyChanged = [];
 const signInProblems = [];
 
+/** One server's bad answer never stops the others being read. */
+async function reading(job) {
+  try {
+    return await job();
+  } catch {
+    return { ok: false, reason: "Its answer couldn't be read." };
+  }
+}
+
 await pool(apps, 4, async (app) => {
-  const proof = readProof(proofDir, app.key);
+  const proof = proofFor(proofDir, app);
 
   if (accepted === app.key) {
     proof.metadataHash = undefined;
@@ -44,19 +50,21 @@ await pool(apps, 4, async (app) => {
     }
   }
 
-  const found = await discover(app.connect.server);
+  const found = await reading(() => discover(app.connect.server));
 
   if (!found.ok) {
-    proof.failures = (proof.failures ?? 0) + 1;
-    proof.problem = plain(found.reason);
-    if (proof.failures === FAILING_AFTER_NIGHTS) {
-      newlyFailing.push({ key: app.key, name: app.name, problem: proof.problem });
+    // Counted by the night, so running this twice in a day doesn't make it two
+    if (proof.failedOn !== date) {
+      proof.failures = (proof.failures ?? 0) + 1;
+      proof.failedOn = date;
     }
+    proof.problem = plain(found.reason);
     writeProof(proofDir, proof);
     return;
   }
 
   proof.failures = 0;
+  proof.failedOn = undefined;
   proof.problem = undefined;
   proof.lastChecked = date;
   proof.signInHost = plain(found.signInHost, 100);
@@ -67,7 +75,6 @@ await pool(apps, 4, async (app) => {
     proof.metadataHash = found.hash;
   } else if (proof.metadataHash !== found.hash && !proof.changedOn) {
     proof.changedOn = date;
-    newlyChanged.push({ key: app.key, name: app.name });
   }
 
   const dueForSignIn =
@@ -76,20 +83,22 @@ await pool(apps, 4, async (app) => {
     (!proof.signInTried || daysSince(proof.signInTried) >= SIGN_IN_RETRY_DAYS);
   if (dueForSignIn) {
     proof.signInTried = date;
-    const page = await openSignInPage(found);
+    const page = await reading(() => openSignInPage(found));
     if (page.ok) {
       proof.signInPage = date;
       proof.signInProblem = undefined;
     } else {
-      proof.signInProblem = plain(page.reason);
-      signInProblems.push({ key: app.key, name: app.name, problem: proof.signInProblem });
+      const problem = plain(page.reason);
+      // Retried each week, and only news is worth saying
+      if (proof.signInProblem !== problem) {
+        signInProblems.push({ key: app.key, name: app.name, problem });
+      }
+      proof.signInProblem = problem;
     }
   }
 
   writeProof(proofDir, proof);
 });
 
-noteRun(proofDir, "nightly", { newlyFailing, newlyChanged, signInProblems });
-console.log(
-  `${apps.length} servers read. ${newlyFailing.length} newly failing, ${newlyChanged.length} changed, ${signInProblems.length} sign-in pages didn't open.`
-);
+noteRun(proofDir, "nightly", { signInProblems });
+console.log(`${apps.length} servers read. ${signInProblems.length} sign-in pages didn't open.`);

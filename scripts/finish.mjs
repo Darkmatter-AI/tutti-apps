@@ -5,7 +5,7 @@
 
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { argument, listApps, plain, readProof, stateOf, today } from "./lib.mjs";
+import { argument, listApps, plain, proofFor, stateOf, today } from "./lib.mjs";
 
 const proofDir = argument("--proof", ".proof");
 
@@ -21,7 +21,6 @@ function takeNote(name) {
 }
 
 const nightly = takeNote("nightly");
-const review = takeNote("review");
 const draft = takeNote("draft");
 
 const steps = {
@@ -34,13 +33,24 @@ const steps = {
 // state a second way
 const counts = {};
 const catalog = [];
+// From where each app stands now, so a night that crashes can't lose one, and the
+// watcher only speaks when this changes
+const sentences = [];
 for (const { errors, app } of listApps(".")) {
   if (errors.length > 0) {
     continue;
   }
-  const proof = readProof(proofDir, app.key);
+  const proof = proofFor(proofDir, app);
   const state = stateOf(proof);
   counts[state] = (counts[state] ?? 0) + 1;
+  const name = plain(app.name, 40);
+  if (state === "changed") {
+    sentences.push(`${name}'s sign-in server changed, so it needs a look before it's listed again.`);
+  } else if (state === "failing") {
+    sentences.push(`${name} has failed two nights running: ${plain(proof.problem)}`);
+  } else if (state === "doubted") {
+    sentences.push(`The second agent doubts ${name}: ${plain(proof.review?.reasons?.[0])}`);
+  }
   catalog.push({
     ...app,
     state,
@@ -49,6 +59,7 @@ for (const { errors, app } of listApps(".")) {
     lastChecked: proof.lastChecked ?? null,
     signInHost: proof.signInHost ?? null,
     renews: proof.renews ?? null,
+    problem: proof.problem ?? proof.signInProblem ?? null,
   });
 }
 writeFileSync(
@@ -56,22 +67,13 @@ writeFileSync(
   `${JSON.stringify({ date: today(), apps: catalog }, null, 2)}\n`
 );
 
-const sentences = [];
-for (const { name, problem } of nightly?.newlyFailing ?? []) {
-  sentences.push(`${plain(name, 40)} has failed two nights running: ${plain(problem)}`);
-}
-for (const { name } of nightly?.newlyChanged ?? []) {
-  sentences.push(`${plain(name, 40)}'s sign-in server changed, so it needs a look before it's listed again.`);
-}
 for (const { name, problem } of nightly?.signInProblems ?? []) {
   sentences.push(`${plain(name, 40)}'s sign-in page didn't open for Tutti: ${plain(problem)}`);
 }
-for (const { name, problem } of review?.newlyDoubted ?? []) {
-  sentences.push(`The second agent doubts ${plain(name, 40)}: ${plain(problem)}`);
-}
+// A step that never ran or was cut off is as wrong as one that failed
 for (const [step, outcome] of Object.entries(steps)) {
-  if (outcome === "failure") {
-    sentences.push(`The ${step} step failed.`);
+  if (outcome !== "success") {
+    sentences.push(`The ${step} step didn't finish (${plain(outcome, 20)}).`);
   }
 }
 
@@ -91,4 +93,4 @@ const status = {
 
 writeFileSync(join(proofDir, "status.json"), `${JSON.stringify(status, null, 2)}\n`);
 console.log(JSON.stringify(status, null, 2));
-process.exit(Object.values(steps).includes("failure") ? 1 : 0);
+process.exit(Object.values(steps).every((outcome) => outcome === "success") ? 0 : 1);

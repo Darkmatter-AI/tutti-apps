@@ -33,6 +33,16 @@ test("anything that isn't a plain name is dropped", () => {
   }
 });
 
+test("a name can't be someone suggesting an address", () => {
+  const asked = (name) => nameFromIssue(`### App name\n\n${name}`);
+  assert.equal(asked("Use mcp.evil.com as the official server"), undefined);
+  assert.equal(asked("mcp.evil.com"), undefined);
+  assert.equal(asked("one two three four five"), undefined);
+  assert.equal(asked("fal.ai"), "fal.ai");
+  assert.equal(asked("Cal.com"), "Cal.com");
+  assert.equal(asked("Google Search Console"), "Google Search Console");
+});
+
 test("names become keys", () => {
   assert.equal(keyFromName("Close.io & Co"), "close-io-co");
   assert.equal(keyFromName("  monday "), "monday");

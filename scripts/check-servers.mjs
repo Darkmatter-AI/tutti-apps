@@ -1,15 +1,15 @@
 // For each app a pull request adds or changes, read what its server says
 // publicly about signing in, and lay that out for the person who merges. It
 // registers nothing: that waits until the file is on main.
-// Usage: node check-servers.mjs --root <this change> --base <main>
+// Usage: node check-servers.mjs --root <the change> --base <main>
 
 import { appendFileSync } from "node:fs";
 import { argument, discover, listApps, plain } from "./lib.mjs";
 
 const before = new Map(
-  listApps(argument("--base", ".main")).map((entry) => [entry.fileName, entry])
+  listApps(argument("--base", ".")).map((entry) => [entry.fileName, entry])
 );
-const changed = listApps(argument("--root", ".")).filter(
+const changed = listApps(argument("--root", ".change")).filter(
   (entry) => entry.app && before.get(entry.fileName)?.text !== entry.text
 );
 
