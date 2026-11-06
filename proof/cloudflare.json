@@ -1,0 +1,14 @@
+{
+  "key": "cloudflare",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "bindings.mcp.cloudflare.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:b92aba5d6c9f14cf8eda86fb749697fe51fde00b970ba18d7402b0cddafeea80",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

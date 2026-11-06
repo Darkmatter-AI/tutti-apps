@@ -1,0 +1,583 @@
+{
+  "date": "2026-11-06",
+  "apps": [
+    {
+      "key": "ahrefs",
+      "name": "Ahrefs",
+      "category": "analytics",
+      "blurb": "Search and backlinks",
+      "company": "ahrefs.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://api.ahrefs.com/mcp/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.ahrefs.com",
+      "renews": false
+    },
+    {
+      "key": "airtable",
+      "name": "Airtable",
+      "category": "docs",
+      "blurb": "Tables",
+      "company": "airtable.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.airtable.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "airtable.com",
+      "renews": null
+    },
+    {
+      "key": "amplitude",
+      "name": "Amplitude",
+      "category": "analytics",
+      "blurb": "Product analytics",
+      "company": "amplitude.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.amplitude.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.amplitude.com",
+      "renews": true
+    },
+    {
+      "key": "atlassian",
+      "name": "Atlassian",
+      "category": "projects",
+      "blurb": "Jira and Confluence",
+      "company": "atlassian.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.atlassian.com/v2/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "auth.atlassian.com",
+      "renews": true
+    },
+    {
+      "key": "attio",
+      "name": "Attio",
+      "category": "other",
+      "blurb": "CRM",
+      "company": "attio.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.attio.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "app.attio.com",
+      "renews": true
+    },
+    {
+      "key": "calendly",
+      "name": "Calendly",
+      "category": "forms-and-booking",
+      "blurb": "Booking",
+      "company": "calendly.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.calendly.com/"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "calendly.com",
+      "renews": null
+    },
+    {
+      "key": "canva",
+      "name": "Canva",
+      "category": "design",
+      "blurb": "Design",
+      "company": "canva.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.canva.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.canva.com",
+      "renews": true
+    },
+    {
+      "key": "clickup",
+      "name": "ClickUp",
+      "category": "projects",
+      "blurb": "Tasks",
+      "company": "clickup.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.clickup.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.clickup.com",
+      "renews": false
+    },
+    {
+      "key": "close",
+      "name": "Close",
+      "category": "other",
+      "blurb": "CRM",
+      "company": "close.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.close.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.close.com",
+      "renews": true
+    },
+    {
+      "key": "cloudflare",
+      "name": "Cloudflare",
+      "category": "code",
+      "blurb": "Workers and storage",
+      "company": "cloudflare.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://bindings.mcp.cloudflare.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "bindings.mcp.cloudflare.com",
+      "renews": true
+    },
+    {
+      "key": "contentful",
+      "name": "Contentful",
+      "category": "websites",
+      "blurb": "Content",
+      "company": "contentful.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.contentful.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.contentful.com",
+      "renews": true
+    },
+    {
+      "key": "figma",
+      "name": "Figma",
+      "category": "design",
+      "blurb": "Design",
+      "company": "figma.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.figma.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.figma.com",
+      "renews": true
+    },
+    {
+      "key": "fireflies",
+      "name": "Fireflies",
+      "category": "docs",
+      "blurb": "Meeting notes",
+      "company": "fireflies.ai",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://api.fireflies.ai/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.fireflies.ai",
+      "renews": true
+    },
+    {
+      "key": "gitlab",
+      "name": "GitLab",
+      "category": "code",
+      "blurb": "Code",
+      "company": "gitlab.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://gitlab.com/api/v4/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "gitlab.com",
+      "renews": true
+    },
+    {
+      "key": "greenhouse",
+      "name": "Greenhouse",
+      "category": "other",
+      "blurb": "Hiring",
+      "company": "greenhouse.io",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.greenhouse.io/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "auth.greenhouse.io",
+      "renews": true
+    },
+    {
+      "key": "intercom",
+      "name": "Intercom",
+      "category": "support",
+      "blurb": "Support",
+      "company": "intercom.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.intercom.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.intercom.com",
+      "renews": true
+    },
+    {
+      "key": "klaviyo",
+      "name": "Klaviyo",
+      "category": "mail-and-calendar",
+      "blurb": "Email marketing",
+      "company": "klaviyo.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.klaviyo.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.klaviyo.com",
+      "renews": true
+    },
+    {
+      "key": "linear",
+      "name": "Linear",
+      "category": "projects",
+      "blurb": "Issues and projects",
+      "company": "linear.app",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.linear.app/mcp"
+      },
+      "state": "listed",
+      "firstSignIn": "2026-11-06",
+      "tools": 70,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.linear.app",
+      "renews": true
+    },
+    {
+      "key": "mixpanel",
+      "name": "Mixpanel",
+      "category": "analytics",
+      "blurb": "Product analytics",
+      "company": "mixpanel.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.mixpanel.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "auth.mixpanel.com",
+      "renews": true
+    },
+    {
+      "key": "monday",
+      "name": "monday",
+      "category": "projects",
+      "blurb": "Boards",
+      "company": "monday.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.monday.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "auth.monday.com",
+      "renews": true
+    },
+    {
+      "key": "notion",
+      "name": "Notion",
+      "category": "docs",
+      "blurb": "Docs and files",
+      "company": "notion.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.notion.com/mcp"
+      },
+      "state": "listed",
+      "firstSignIn": "2026-11-06",
+      "tools": 77,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.notion.com",
+      "renews": true
+    },
+    {
+      "key": "pandadoc",
+      "name": "PandaDoc",
+      "category": "docs",
+      "blurb": "Documents to sign",
+      "company": "pandadoc.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.pandadoc.com/v1/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.pandadoc.com",
+      "renews": true
+    },
+    {
+      "key": "paypal",
+      "name": "PayPal",
+      "category": "payments",
+      "blurb": "Payments",
+      "company": "paypal.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.paypal.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.paypal.com",
+      "renews": true
+    },
+    {
+      "key": "pipedrive",
+      "name": "Pipedrive",
+      "category": "other",
+      "blurb": "CRM",
+      "company": "pipedrive.ai",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.pipedrive.ai/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "oauth.pipedrive.com",
+      "renews": true
+    },
+    {
+      "key": "posthog",
+      "name": "PostHog",
+      "category": "analytics",
+      "blurb": "Product analytics",
+      "company": "posthog.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.posthog.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "oauth.posthog.com",
+      "renews": true
+    },
+    {
+      "key": "ramp",
+      "name": "Ramp",
+      "category": "other",
+      "blurb": "Spend",
+      "company": "ramp.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://ramp-mcp-remote.ramp.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "ramp-mcp-remote.ramp.com",
+      "renews": true
+    },
+    {
+      "key": "sentry",
+      "name": "Sentry",
+      "category": "code",
+      "blurb": "Errors",
+      "company": "sentry.dev",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.sentry.dev/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.sentry.dev",
+      "renews": true
+    },
+    {
+      "key": "square",
+      "name": "Square",
+      "category": "payments",
+      "blurb": "Payments",
+      "company": "squareup.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.squareup.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.squareup.com",
+      "renews": true
+    },
+    {
+      "key": "stripe",
+      "name": "Stripe",
+      "category": "payments",
+      "blurb": "Payments",
+      "company": "stripe.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.stripe.com"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "access.stripe.com",
+      "renews": true
+    },
+    {
+      "key": "supabase",
+      "name": "Supabase",
+      "category": "code",
+      "blurb": "Database",
+      "company": "supabase.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.supabase.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.supabase.com",
+      "renews": true
+    },
+    {
+      "key": "trello",
+      "name": "Trello",
+      "category": "projects",
+      "blurb": "Boards",
+      "company": "trello.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.trello.com/v1"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "auth.atlassian.com",
+      "renews": true
+    },
+    {
+      "key": "typeform",
+      "name": "Typeform",
+      "category": "forms-and-booking",
+      "blurb": "Forms",
+      "company": "typeform.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://api.typeform.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "api.typeform.com",
+      "renews": true
+    },
+    {
+      "key": "vercel",
+      "name": "Vercel",
+      "category": "code",
+      "blurb": "Deployments",
+      "company": "vercel.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.vercel.com"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "vercel.com",
+      "renews": true
+    },
+    {
+      "key": "webflow",
+      "name": "Webflow",
+      "category": "websites",
+      "blurb": "Websites",
+      "company": "webflow.com",
+      "connect": {
+        "kind": "mcp",
+        "server": "https://mcp.webflow.com/mcp"
+      },
+      "state": "drafted",
+      "firstSignIn": null,
+      "tools": null,
+      "lastChecked": "2026-11-06",
+      "signInHost": "mcp.webflow.com",
+      "renews": true
+    }
+  ]
+}

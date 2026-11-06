@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "run": "https://github.com/Darkmatter-AI/tutti-apps/actions/runs/42212988651",
+  "counts": {
+    "drafted": 32,
+    "listed": 2
+  },
+  "steps": {
+    "check": "success",
+    "review": "failure",
+    "draft": "failure"
+  },
+  "drafts": [],
+  "queued": null,
+  "alert": "Ahrefs's sign-in page didn't open for Tutti: The sign-in page answered 403. Canva's sign-in page didn't open for Tutti: The sign-in page answered 400. Figma's sign-in page didn't open for Tutti: Registering answered 403. Intercom's sign-in page didn't open for Tutti: Registering answered 400. Pipedrive's sign-in page didn't open for Tutti: Registering answered 400. Square's sign-in page didn't open for Tutti: Registering answered 400. Typeform's sign-in page didn't open for Tutti: Registering answered 400. Vercel's sign-in page didn't open for Tutti: Registering answered 400. The review step failed. The draft step failed."
+}

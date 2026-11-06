@@ -1,0 +1,14 @@
+{
+  "key": "fireflies",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "api.fireflies.ai",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:3999a97c0b0f5a75bfa6899f24b5b3f55397ce339db7b567c3210d8ca9bb9039",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

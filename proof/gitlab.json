@@ -1,0 +1,14 @@
+{
+  "key": "gitlab",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "gitlab.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:d843a34081aeb27666eb0aab9e1da0155284163a1bceb94f1e99c1b7a8007699",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

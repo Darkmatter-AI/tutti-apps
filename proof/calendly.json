@@ -1,0 +1,14 @@
+{
+  "key": "calendly",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "calendly.com",
+  "registers": true,
+  "renews": null,
+  "metadataHash": "sha256:63b3aa7dc3bfd1fbd2a537c57721cf39d948c1eb0823edf9556e03d39454e97b",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

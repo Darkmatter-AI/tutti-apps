@@ -1,0 +1,14 @@
+{
+  "key": "sentry",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "mcp.sentry.dev",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:35bee4f3dc61858926cb9551230340669ab5fe90f196bd27d5472687a812b800",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

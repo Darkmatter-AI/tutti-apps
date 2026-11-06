@@ -1,0 +1,14 @@
+{
+  "key": "mixpanel",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "auth.mixpanel.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:f534132dfc18bf04df13ff278e7b5cc2f9da80058dd28419bb3761495b024bc4",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

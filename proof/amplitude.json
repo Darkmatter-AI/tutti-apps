@@ -1,0 +1,14 @@
+{
+  "key": "amplitude",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "mcp.amplitude.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:f0af8a68520aeb232b796d167b9f231e659dd58ab5c03e3a153fa11edd9b8153",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

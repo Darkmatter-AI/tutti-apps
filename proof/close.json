@@ -1,0 +1,14 @@
+{
+  "key": "close",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "api.close.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:fcc02fbeae3e67a90df8782f9a28488e5de42025367e4c34f3b21f79fe45ca4d",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

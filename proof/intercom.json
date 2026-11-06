@@ -1,0 +1,14 @@
+{
+  "key": "intercom",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "mcp.intercom.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:917daf6d3341d0fae500cc0af95574ecad04331f4abe02096e2ac516eaa0d1da",
+  "signInTried": "2026-11-06",
+  "signInProblem": "Registering answered 400."
+}

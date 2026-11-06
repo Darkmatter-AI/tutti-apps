@@ -1,0 +1,14 @@
+{
+  "key": "contentful",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "mcp.contentful.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:d19a3157ddff6f99e8a511523b892ecae7e28727248c656472e5fa4a83913bdf",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

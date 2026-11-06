@@ -4,5 +4,10 @@
   "signInPage": "2026-11-06",
   "tools": 77,
   "toolsHash": null,
-  "lastChecked": null
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "mcp.notion.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:a682ce93b3f523a9ec06dba7ab1ee53d11800d20531dabe6584c7ff21b8559ae"
 }

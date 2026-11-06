@@ -1,0 +1,14 @@
+{
+  "key": "airtable",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "airtable.com",
+  "registers": true,
+  "renews": null,
+  "metadataHash": "sha256:adc4aa124d680b477b1354b3fdaefa52929f9bf363aaaf4e3c118b0d5e77b98c",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}

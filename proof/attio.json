@@ -1,0 +1,14 @@
+{
+  "key": "attio",
+  "firstSignIn": null,
+  "tools": null,
+  "toolsHash": null,
+  "lastChecked": "2026-11-06",
+  "failures": 0,
+  "signInHost": "app.attio.com",
+  "registers": true,
+  "renews": true,
+  "metadataHash": "sha256:8c515f01e6bd96a25f7158d72be31e668dcf354f58af7c4cb5c3fd2f652aa1cf",
+  "signInTried": "2026-11-06",
+  "signInPage": "2026-11-06"
+}
