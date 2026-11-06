@@ -8,7 +8,5 @@
   "signInHost": "api.supabase.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:3e5aba6b8413a4a0f18626a3861802494fdacaf6dbc52c005f17eccf22924877",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:3e5aba6b8413a4a0f18626a3861802494fdacaf6dbc52c005f17eccf22924877"
 }

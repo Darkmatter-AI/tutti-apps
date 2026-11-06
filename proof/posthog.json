@@ -8,7 +8,5 @@
   "signInHost": "oauth.posthog.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:4fba4d7168863c760c1fcfc8011ff926fd73510259d0fada6edcb37af4f9ad6c",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:4fba4d7168863c760c1fcfc8011ff926fd73510259d0fada6edcb37af4f9ad6c"
 }

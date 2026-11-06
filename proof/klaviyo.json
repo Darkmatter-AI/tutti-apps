@@ -8,7 +8,5 @@
   "signInHost": "mcp.klaviyo.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:85b8270f5cb4900847956c57ea504d14e3f64af9ad389d1292b0f3bbedf48da2",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:85b8270f5cb4900847956c57ea504d14e3f64af9ad389d1292b0f3bbedf48da2"
 }

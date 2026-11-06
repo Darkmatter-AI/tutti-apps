@@ -8,7 +8,5 @@
   "signInHost": "mcp.pandadoc.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:70352fefc11b2af3423a8f3f312eec6ee9da8d2f62cfcebbc74f5f939441a037",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:70352fefc11b2af3423a8f3f312eec6ee9da8d2f62cfcebbc74f5f939441a037"
 }

@@ -8,7 +8,5 @@
   "signInHost": "auth.greenhouse.io",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:d88b930a3a43e7fdab3ca089a8af15c7c447d72e8167f3834d6d1d998c50c1b0",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:d88b930a3a43e7fdab3ca089a8af15c7c447d72e8167f3834d6d1d998c50c1b0"
 }

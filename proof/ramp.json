@@ -8,7 +8,5 @@
   "signInHost": "ramp-mcp-remote.ramp.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:2b62adb1f3bd41b8aa72d478fb1620b6b389e78fef605e1c89f51061cfcd0d0d",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:2b62adb1f3bd41b8aa72d478fb1620b6b389e78fef605e1c89f51061cfcd0d0d"
 }

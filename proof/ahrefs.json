@@ -8,7 +8,5 @@
   "signInHost": "api.ahrefs.com",
   "registers": true,
   "renews": false,
-  "metadataHash": "sha256:de40008fda11438b4aa1b68e0759054a1519395c506226829aff9462ed09f321",
-  "signInTried": "2026-11-06",
-  "signInProblem": "The sign-in page answered 403."
+  "metadataHash": "sha256:de40008fda11438b4aa1b68e0759054a1519395c506226829aff9462ed09f321"
 }

@@ -8,7 +8,5 @@
   "signInHost": "api.figma.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:2c56aa59510cbc2df470b55cbdbe3063cead362397501016c0cbf2090880d296",
-  "signInTried": "2026-11-06",
-  "signInProblem": "Registering answered 403."
+  "metadataHash": "sha256:2c56aa59510cbc2df470b55cbdbe3063cead362397501016c0cbf2090880d296"
 }

@@ -8,7 +8,5 @@
   "signInHost": "mcp.webflow.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:cf1857367798d0d982d643c785ba13fc2a5d9f70a35c8367fa1bc0561fca4207",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:cf1857367798d0d982d643c785ba13fc2a5d9f70a35c8367fa1bc0561fca4207"
 }

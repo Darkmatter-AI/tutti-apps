@@ -8,7 +8,5 @@
   "signInHost": "access.stripe.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:9e25c5c411828c364670c9f9c30c9edd99a86ddb7704701bbba12817eebeea15",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:9e25c5c411828c364670c9f9c30c9edd99a86ddb7704701bbba12817eebeea15"
 }

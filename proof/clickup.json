@@ -8,7 +8,5 @@
   "signInHost": "mcp.clickup.com",
   "registers": true,
   "renews": false,
-  "metadataHash": "sha256:ee778f2c63f7ef22836ee0582e39729d015402896e4629f4335e3ce7b36ae734",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:ee778f2c63f7ef22836ee0582e39729d015402896e4629f4335e3ce7b36ae734"
 }

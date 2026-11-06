@@ -8,7 +8,5 @@
   "signInHost": "mcp.squareup.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:c7986a672a59e71dffb965ad7756d466c22b8577a9c703acb981e2c66db69d60",
-  "signInTried": "2026-11-06",
-  "signInProblem": "Registering answered 400."
+  "metadataHash": "sha256:c7986a672a59e71dffb965ad7756d466c22b8577a9c703acb981e2c66db69d60"
 }

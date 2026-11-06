@@ -8,7 +8,5 @@
   "signInHost": "mcp.canva.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:24fcc09339bd14b5462c4bdbafc7a7316ef797efb02815a934fd60f60aa67a43",
-  "signInTried": "2026-11-06",
-  "signInProblem": "The sign-in page answered 400."
+  "metadataHash": "sha256:24fcc09339bd14b5462c4bdbafc7a7316ef797efb02815a934fd60f60aa67a43"
 }

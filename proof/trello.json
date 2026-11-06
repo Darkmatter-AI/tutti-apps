@@ -8,7 +8,5 @@
   "signInHost": "auth.atlassian.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:406e78c66ff9dac5e1efff76408073003a2f08010127a3f53bb4964180758a0a",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:406e78c66ff9dac5e1efff76408073003a2f08010127a3f53bb4964180758a0a"
 }

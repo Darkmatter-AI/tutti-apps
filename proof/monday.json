@@ -8,7 +8,5 @@
   "signInHost": "auth.monday.com",
   "registers": true,
   "renews": true,
-  "metadataHash": "sha256:4e31c119a37c8ac6b53dd4016a0ad58f4e980b35ed9ead082042d289cd3b1656",
-  "signInTried": "2026-11-06",
-  "signInPage": "2026-11-06"
+  "metadataHash": "sha256:4e31c119a37c8ac6b53dd4016a0ad58f4e980b35ed9ead082042d289cd3b1656"
 }
