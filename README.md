@@ -40,4 +40,3 @@ Two agents also run at night. One looks for the most wanted app's server, puts o
 ## Licence
 
 Apache 2.0. The names and logos of the apps here belong to their companies, and none of those companies made this list. See [NOTICE](NOTICE).
-
