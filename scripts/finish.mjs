@@ -72,7 +72,7 @@ for (const { name, problem } of nightly?.signInProblems ?? []) {
   sentences.push(`${plain(name, 40)}'s sign-in page didn't open for Tutti: ${plain(problem)}`);
 }
 for (const name of nightly?.nowListed ?? []) {
-  sentences.push(`Someone connected ${plain(name, 40)} for real, so it's listed. Tutti's copy of the list needs a sync.`);
+  sentences.push(`Someone connected ${plain(name, 40)} for real, so it's listed. Tutti's own list picks that up within the hour.`);
 }
 for (const name of review?.unreadable ?? []) {
   sentences.push(`The second agent's answer about ${plain(name, 40)} couldn't be read, so it's asked again.`);
