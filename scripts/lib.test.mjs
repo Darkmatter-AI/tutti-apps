@@ -8,10 +8,12 @@ import {
   discover,
   isPublicName,
   listApps,
+  noteFirstSignIn,
   openSignInPage,
   plain,
   pool,
   proofFor,
+  readFirstSignIns,
   REDIRECT_URI,
   stateOf,
   validateApp,
@@ -526,4 +528,52 @@ test("proof from before addresses were kept is taken as this address's", () => {
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test("readFirstSignIns keeps only what's well formed", () => {
+  const good = { firstSignIn: "2026-11-07", tools: 12, server: "https://mcp.clickup.com/mcp" };
+  const found = readFirstSignIns({
+    apps: {
+      clickup: good,
+      "../etc": good,
+      "no-date": { ...good, firstSignIn: "soon" },
+      "no-count": { ...good, tools: "12" },
+      "too-many": { ...good, tools: 1_000_000 },
+      "no-server": { ...good, server: 1 },
+      empty: null,
+    },
+  });
+  assert.deepEqual([...found.keys()], ["clickup"]);
+  assert.deepEqual(found.get("clickup"), good);
+});
+
+test("readFirstSignIns reads nothing from an answer of the wrong shape", () => {
+  assert.equal(readFirstSignIns(null).size, 0);
+  assert.equal(readFirstSignIns({}).size, 0);
+  assert.equal(readFirstSignIns({ apps: [] }).size, 0);
+});
+
+test("noteFirstSignIn lists an app connected on its own address", () => {
+  const server = "https://mcp.clickup.com/mcp";
+  const proof = { key: "clickup", server, firstSignIn: null, tools: null };
+  assert.equal(noteFirstSignIn(proof, { firstSignIn: "2026-11-07", tools: 12, server }), true);
+  assert.equal(proof.firstSignIn, "2026-11-07");
+  assert.equal(proof.tools, 12);
+  assert.equal(stateOf({ ...proof, review: { verdict: "pass" } }), "listed");
+});
+
+test("noteFirstSignIn keeps the first date", () => {
+  const server = "https://mcp.clickup.com/mcp";
+  const proof = { key: "clickup", server, firstSignIn: "2026-11-01", tools: 9 };
+  assert.equal(noteFirstSignIn(proof, { firstSignIn: "2026-11-07", tools: 12, server }), false);
+  assert.equal(proof.firstSignIn, "2026-11-01");
+  assert.equal(proof.tools, 9);
+});
+
+test("noteFirstSignIn ignores a sign-in made on another address", () => {
+  const proof = { key: "clickup", server: "https://mcp.clickup.com/mcp", firstSignIn: null };
+  const moved = { firstSignIn: "2026-11-07", tools: 12, server: "https://old.clickup.com/mcp" };
+  assert.equal(noteFirstSignIn(proof, moved), false);
+  assert.equal(proof.firstSignIn, null);
+  assert.equal(noteFirstSignIn(proof, undefined), false);
 });

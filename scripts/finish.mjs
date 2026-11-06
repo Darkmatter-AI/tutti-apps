@@ -22,6 +22,7 @@ function takeNote(name) {
 
 const nightly = takeNote("nightly");
 const draft = takeNote("draft");
+const review = takeNote("review");
 
 const steps = {
   check: process.env.STEP_CHECK ?? "unknown",
@@ -69,6 +70,15 @@ writeFileSync(
 
 for (const { name, problem } of nightly?.signInProblems ?? []) {
   sentences.push(`${plain(name, 40)}'s sign-in page didn't open for Tutti: ${plain(problem)}`);
+}
+for (const name of nightly?.nowListed ?? []) {
+  sentences.push(`Someone connected ${plain(name, 40)} for real, so it's listed. Tutti's own list picks that up within the hour.`);
+}
+for (const name of review?.unreadable ?? []) {
+  sentences.push(`The second agent's answer about ${plain(name, 40)} couldn't be read, so it's asked again.`);
+}
+if (nightly?.firstSignInsProblem) {
+  sentences.push(`First sign-ins couldn't be read: ${plain(nightly.firstSignInsProblem)}`);
 }
 // A step that never ran or was cut off is as wrong as one that failed
 for (const [step, outcome] of Object.entries(steps)) {

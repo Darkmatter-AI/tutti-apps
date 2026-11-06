@@ -15,7 +15,7 @@ Every app here connects to the server its own company runs, over [MCP](https://m
 | Changed | Its sign-in server moved since we last looked. It stays off every list until someone looks. |
 | Failing | Its server hasn't answered properly for two nights. |
 
-Connecting for real is the only way onto the public list. The date comes from Tutti when a real connection is made, and all it publishes is that date and how many tools the server offered. No names of people or workspaces.
+Connecting for real is the only way onto the public list: someone signs in, the server lists its tools and one step runs. The date comes from Tutti, and all it publishes is that date, the address and how many tools the server offered. No names of people or workspaces.
 
 ## Ask for an app
 
