@@ -22,6 +22,7 @@ function takeNote(name) {
 
 const nightly = takeNote("nightly");
 const draft = takeNote("draft");
+const review = takeNote("review");
 
 const steps = {
   check: process.env.STEP_CHECK ?? "unknown",
@@ -72,6 +73,9 @@ for (const { name, problem } of nightly?.signInProblems ?? []) {
 }
 for (const name of nightly?.nowListed ?? []) {
   sentences.push(`Someone connected ${plain(name, 40)} for real, so it's listed. Tutti's copy of the list needs a sync.`);
+}
+for (const name of review?.unreadable ?? []) {
+  sentences.push(`The second agent's answer about ${plain(name, 40)} couldn't be read, so it's asked again.`);
 }
 if (nightly?.firstSignInsProblem) {
   sentences.push(`First sign-ins couldn't be read: ${plain(nightly.firstSignInsProblem)}`);

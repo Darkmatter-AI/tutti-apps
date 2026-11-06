@@ -607,6 +607,7 @@ export function readFirstSignIns(answer) {
     const { firstSignIn, tools, server } = entry ?? {};
     if (
       KEY.test(key) &&
+      typeof firstSignIn === "string" &&
       A_DAY.test(firstSignIn) &&
       Number.isInteger(tools) &&
       tools >= 0 &&

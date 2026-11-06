@@ -17,6 +17,7 @@ import {
   pool,
   proofFor,
   readFirstSignIns,
+  stateOf,
   today,
   writeProof,
 } from "./lib.mjs";
@@ -74,7 +75,8 @@ await pool(apps, 4, async (app) => {
     }
   }
 
-  if (noteFirstSignIn(proof, connected.get(app.key))) {
+  // One that's doubted or changed stays off the list, and the alert already says why
+  if (noteFirstSignIn(proof, connected.get(app.key)) && stateOf(proof) === "listed") {
     nowListed.push(app.name);
   }
 
