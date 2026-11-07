@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-06",
-  "run": "https://github.com/Darkmatter-AI/tutti-apps/actions/runs/42282250200",
+  "date": "2026-11-07",
+  "run": "https://github.com/Darkmatter-AI/tutti-apps/actions/runs/42362774685",
   "counts": {
     "drafted": 12,
     "not-tried": 19,
@@ -14,11 +14,11 @@
   },
   "drafts": [
     {
-      "key": "customer-io",
+      "key": "gong",
       "outcome": "drafted",
-      "issue": 4
+      "issue": 5
     }
   ],
-  "queued": 38,
+  "queued": 37,
   "alert": "The second agent doubts Ramp: The entry's server address is ramp-mcp-remote.ramp.com, but the independent search names https mcp.ramp.com mcp as Ramp's official remote MCP server, so the two don't match."
 }
