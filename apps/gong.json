@@ -1,0 +1,11 @@
+{
+  "key": "gong",
+  "name": "Gong",
+  "category": "analytics",
+  "blurb": "Revenue intelligence platform",
+  "company": "gong.io",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.gong.io/mcp"
+  }
+}
