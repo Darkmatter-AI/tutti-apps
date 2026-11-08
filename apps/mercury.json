@@ -1,0 +1,11 @@
+{
+  "key": "mercury",
+  "name": "Mercury",
+  "category": "payments",
+  "blurb": "Business banking for startups",
+  "company": "mercury.com",
+  "connect": {
+    "kind": "mcp",
+    "server": "https://mcp.mercury.com/mcp"
+  }
+}
