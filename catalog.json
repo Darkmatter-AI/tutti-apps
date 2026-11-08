@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "apps": [
     {
       "key": "ahrefs",
@@ -14,7 +14,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "app.ahrefs.com",
       "renews": false,
       "problem": "A bot check stands in front of its sign-in page, so this can't tell."
@@ -32,7 +32,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "airtable.com",
       "renews": null,
       "problem": null
@@ -50,7 +50,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.amplitude.com",
       "renews": true,
       "problem": null
@@ -68,7 +68,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "auth.atlassian.com",
       "renews": true,
       "problem": "The sign-in page answered 202."
@@ -86,7 +86,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "app.attio.com",
       "renews": true,
       "problem": null
@@ -104,7 +104,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "calendly.com",
       "renews": null,
       "problem": null
@@ -122,7 +122,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.canva.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -140,7 +140,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.clickup.com",
       "renews": false,
       "problem": null
@@ -158,7 +158,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "app.close.com",
       "renews": true,
       "problem": null
@@ -176,7 +176,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "bindings.mcp.cloudflare.com",
       "renews": true,
       "problem": null
@@ -194,7 +194,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.contentful.com",
       "renews": true,
       "problem": null
@@ -212,7 +212,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "www.figma.com",
       "renews": true,
       "problem": "Registering answered 403."
@@ -230,7 +230,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "api.fireflies.ai",
       "renews": true,
       "problem": null
@@ -248,7 +248,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "gitlab.com",
       "renews": true,
       "problem": "A bot check stands in front of its sign-in page, so this can't tell."
@@ -266,7 +266,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "auth.greenhouse.io",
       "renews": true,
       "problem": null
@@ -284,7 +284,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.intercom.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -302,7 +302,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.klaviyo.com",
       "renews": true,
       "problem": null
@@ -320,7 +320,7 @@
       "state": "listed",
       "firstSignIn": "2026-11-06",
       "tools": 70,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.linear.app",
       "renews": true,
       "problem": null
@@ -338,7 +338,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mixpanel.com",
       "renews": true,
       "problem": null
@@ -356,7 +356,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "auth.monday.com",
       "renews": true,
       "problem": null
@@ -374,7 +374,7 @@
       "state": "listed",
       "firstSignIn": "2026-11-06",
       "tools": 77,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.notion.com",
       "renews": true,
       "problem": null
@@ -392,7 +392,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.pandadoc.com",
       "renews": true,
       "problem": null
@@ -410,7 +410,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.paypal.com",
       "renews": true,
       "problem": "A bot check stands in front of its sign-in page, so this can't tell."
@@ -428,7 +428,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "oauth.pipedrive.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -446,7 +446,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "oauth.posthog.com",
       "renews": true,
       "problem": null
@@ -464,7 +464,7 @@
       "state": "doubted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "ramp-mcp-remote.ramp.com",
       "renews": true,
       "problem": "The sign-in page failed (TypeError)."
@@ -482,7 +482,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.sentry.dev",
       "renews": true,
       "problem": null
@@ -500,7 +500,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.squareup.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -518,7 +518,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "access.stripe.com",
       "renews": true,
       "problem": null
@@ -536,7 +536,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "api.supabase.com",
       "renews": true,
       "problem": null
@@ -554,7 +554,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "auth.atlassian.com",
       "renews": true,
       "problem": "The sign-in page answered 202."
@@ -572,7 +572,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "admin.typeform.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -590,7 +590,7 @@
       "state": "drafted",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "vercel.com",
       "renews": true,
       "problem": "It only lets in return addresses on its own list, so the company needs to add Tutti's."
@@ -608,7 +608,7 @@
       "state": "not-tried",
       "firstSignIn": null,
       "tools": null,
-      "lastChecked": "2026-11-07",
+      "lastChecked": "2026-11-08",
       "signInHost": "mcp.webflow.com",
       "renews": true,
       "problem": null
